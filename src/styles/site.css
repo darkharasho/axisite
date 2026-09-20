@@ -24,3 +24,11 @@
 [data-filter-hidden] {
   display: none;
 }
+
+.site-filter-empty {
+  margin-top: 14px;
+}
+
+.site-filter-empty[hidden] {
+  display: none;
+}

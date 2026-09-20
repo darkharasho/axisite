@@ -10,4 +10,4 @@ The apps sort into a few loose groups. Combat & logs covers parsing and in-game 
 
 Two apps sit outside that grouping because they're about the suite itself rather than the game. AxiOM is the desktop launcher — it lives in your system tray, shows every app whether or not you've installed it, and handles installing and updating from one click. axiwiki, the site you're reading, is the map: a browsable list of what exists, what each app does, and where to get it. AxiOM manages what's on your machine; axiwiki describes the whole suite regardless of what you have installed.
 
-If you're new here, the practical path is: install AxiOM, then use this site to figure out which of the other apps are actually useful to you. Nobody needs all eighteen.
+If you're new here, the practical path is: install AxiOM, then use this site to figure out which of the other apps are actually useful to you. Nobody needs all of them.

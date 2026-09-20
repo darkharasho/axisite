@@ -15,10 +15,14 @@ if (mount) {
         <input class="axi-input" id="app-search" type="search" placeholder="Search the suite…" />
       </div>
     </div>
-    <div class="axi-row" style="--axi-row-gap: 6px; margin-top: 10px" data-pills></div>`;
+    <div class="axi-row" style="--axi-row-gap: 6px; margin-top: 10px" data-pills role="group" aria-label="Filter by category"></div>
+    <p class="site-filter-status axi-sr-only" data-filter-status aria-live="polite"></p>
+    <p class="axi-notice site-filter-empty" data-filter-empty hidden>Nothing matches that.</p>`;
 
   const input = mount.querySelector<HTMLInputElement>('#app-search')!;
   const pills = mount.querySelector<HTMLElement>('[data-pills]')!;
+  const status = mount.querySelector<HTMLElement>('[data-filter-status]')!;
+  const empty = mount.querySelector<HTMLElement>('[data-filter-empty]')!;
 
   for (const category of CATEGORIES) {
     const pill = document.createElement('button');
@@ -32,6 +36,7 @@ if (mount) {
 
   function apply() {
     const query = input.value;
+    let visibleCount = 0;
     for (const card of cards) {
       const hit = matches(
         { search: card.dataset.search ?? '', category: card.dataset.category ?? '' },
@@ -39,12 +44,18 @@ if (mount) {
         active,
       );
       card.toggleAttribute('data-filter-hidden', !hit);
+      if (hit) visibleCount += 1;
     }
     // A section with nothing left in it is noise, so it goes too.
     for (const section of sections) {
       const visible = section.querySelectorAll('[data-slug]:not([data-filter-hidden])').length;
       section.toggleAttribute('data-filter-hidden', visible === 0);
     }
+    empty.hidden = visibleCount !== 0;
+    status.textContent =
+      visibleCount === 0
+        ? 'Nothing matches that.'
+        : `${visibleCount} app${visibleCount === 1 ? '' : 's'} shown.`;
   }
 
   input.addEventListener('input', apply);

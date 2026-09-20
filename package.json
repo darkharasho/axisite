@@ -26,12 +26,11 @@
   "homepage": "https://github.com/darkharasho/axiwiki#readme",
   "dependencies": {
     "astro": "^5.18.2",
-    "sharp": "^0.35.4"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "gray-matter": "^4.0.3",
     "typescript": "^5.9.3",
-    "vitest": "^2.1.9",
-    "zod": "^3.25.76"
+    "vitest": "^2.1.9"
   }
 }

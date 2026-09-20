@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { chipClass, STATUS_LABEL, strip } from '../lib/categories';
+import { CATEGORY_META, chipClass, STATUS_LABEL, strip } from '../lib/categories';
 import { loadReleases, releaseChip } from '../lib/releases';
 
 interface Props { entry: CollectionEntry<'apps'> }
@@ -11,7 +11,7 @@ const stripColour = strip(app.status);
 const chip = app.repo ? releaseChip(loadReleases()[app.repo]) : undefined;
 const href = app.hidden ? undefined : `/apps/${entry.id}`;
 const glyph = app.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase();
-const haystack = `${app.name} ${app.tagline} ${(app.platforms ?? []).join(' ')}`.toLowerCase();
+const haystack = `${app.name} ${app.tagline} ${(app.platforms ?? []).join(' ')} ${app.category} ${CATEGORY_META[app.category].label}`.toLowerCase();
 const Tag = href ? 'a' : 'div';
 ---
 <Tag
