@@ -2,6 +2,9 @@ name: pages
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: [refresh-releases]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +19,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # GitHub does not trigger workflow runs from pushes made with the
+    # default GITHUB_TOKEN, so refresh-releases's nightly commit to main
+    # never fires this workflow's own `push` trigger. This `workflow_run`
+    # branch is what actually redeploys after the nightly refresh; guard it
+    # so a failed refresh run doesn't redeploy stale/broken data.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

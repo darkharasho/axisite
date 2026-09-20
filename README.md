@@ -3,7 +3,9 @@
 axiwiki is the web front door for the axi suite of Guild Wars 2 tools — a
 static, data-driven hub that links out to every axi app and web property
 (arcdps plugins, build tools, the ACRDPS wiki, the addon checker, and more),
-styled with the shared axi-design system.
+styled with the shared axi-design system. axi-design is always linked from
+its CDN (`https://darkharasho.github.io/axi-design/v1/axi.css`) — it is
+never vendored into this repo.
 
 It's the counterpart to **axiom**, the desktop launcher: axiom installs and
 launches what you have installed; axiwiki is the browsable map of what
@@ -48,6 +50,25 @@ Available frontmatter fields (see `src/lib/schema.ts`):
 | `hidden` | boolean, default `false` — set for private repos with no public listing | no |
 | `links` | array of `{ label, url }` | no |
 
+## Adding an editorial page
+
+Editorial (hand-written) pages, like "About" or "Getting started", cost
+exactly one Markdown file under `src/content/pages/`. The filename becomes
+the page's slug (e.g. `src/content/pages/about.md` renders at `/about`),
+and `Base.astro`'s nav bar is generated from this collection sorted by
+`order`, so a new page also gets a nav entry automatically — no other file
+needs to change.
+
+Available frontmatter fields (see `src/lib/schema.ts`):
+
+| Field | Type | Required |
+|---|---|---|
+| `title` | string | yes |
+| `description` | string | yes |
+| `order` | integer, controls nav position (default `100`) | no |
+
+The body below the frontmatter is rendered as the page content.
+
 ## Release data
 
 `data/releases.json` holds the latest published release (tag, publish date,
@@ -56,6 +77,14 @@ Actions workflow (`refresh-releases.yml`) re-runs the sweep and commits the
 file only when a version actually moved. `npm run build` also refreshes it
 at build time, but if the GitHub API is unreachable the build falls back to
 the committed copy and never fails because GitHub was unreachable.
+
+That nightly commit alone does not redeploy the live site: GitHub does not
+trigger workflow runs from pushes made with the default `GITHUB_TOKEN`, so
+`refresh-releases.yml`'s push to `main` would never fire `pages.yml`'s own
+`push` trigger. `pages.yml` instead also listens for a completed
+`refresh-releases` run via `workflow_run` (guarded to redeploy only when
+that run succeeded) so the freshly committed release data actually reaches
+the deployed site the same night.
 
 ## Commands
 
