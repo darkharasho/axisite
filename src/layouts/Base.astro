@@ -1,0 +1,37 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Every app and web property in the axi suite.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="https://darkharasho.github.io/axi-design/v1/axi.css" />
+  </head>
+  <body>
+    <header class="axi-mast">
+      <div class="axi-mast__in">
+        <a class="axi-brand" href="/">
+          <span class="axi-sigil" aria-hidden="true">A</span>
+          <span class="axi-brand__name">axi<small>The suite</small></span>
+        </a>
+        <nav class="axi-tabs">
+          <a href="/">Apps</a>
+          <a href="/about">About</a>
+        </nav>
+      </div>
+    </header>
+    <main class="axi-page">
+      <slot />
+    </main>
+  </body>
+</html>

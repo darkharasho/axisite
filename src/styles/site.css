@@ -1,0 +1,26 @@
+:root {
+  --axi-accent: #b06bff;
+}
+
+.site-hero {
+  max-width: 62ch;
+}
+
+.site-section + .site-section {
+  margin-top: 36px;
+}
+
+.site-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.site-filters {
+  margin: 20px 0 28px;
+}
+
+[data-filter-hidden] {
+  display: none;
+}
