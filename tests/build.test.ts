@@ -80,3 +80,21 @@ describe('app detail pages', () => {
     expect(html).toContain('axi-prose');
   });
 });
+
+describe('editorial pages', () => {
+  it('emits a page for every entry in the pages collection', () => {
+    const slugs = readdirSync(resolve(root, 'src/content/pages'))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => f.replace(/\.md$/, ''));
+    expect(slugs.length).toBeGreaterThan(0);
+    for (const slug of slugs) expect(existsSync(dist(`${slug}/index.html`))).toBe(true);
+  });
+
+  it('does not shadow the /apps route', () => {
+    expect(existsSync(resolve(root, 'src/content/pages/apps.md'))).toBe(false);
+  });
+
+  it('renders editorial bodies in axi-prose', () => {
+    expect(read('about/index.html')).toContain('axi-prose');
+  });
+});
