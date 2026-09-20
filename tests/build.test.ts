@@ -31,17 +31,21 @@ describe('build output', () => {
   });
 });
 
+const appSlugs = readdirSync(resolve(root, 'src/content/apps'))
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => f.replace(/\.md$/, ''));
+
 describe('landing page', () => {
   it('server-renders a card for every app', () => {
     const html = read('index.html');
     const cards = html.match(/data-slug="/g) ?? [];
-    expect(cards.length).toBe(18);
+    expect(cards.length).toBe(appSlugs.length);
   });
 
   it('gives every card the attributes the filter script reads', () => {
     const html = read('index.html');
-    expect((html.match(/data-category="/g) ?? []).length).toBe(18);
-    expect((html.match(/data-search="/g) ?? []).length).toBe(18);
+    expect((html.match(/data-category="/g) ?? []).length).toBe(appSlugs.length);
+    expect((html.match(/data-search="/g) ?? []).length).toBe(appSlugs.length);
   });
 
   it('strips stable and beta cards but not work-in-progress ones', () => {
@@ -63,11 +67,7 @@ describe('landing page', () => {
 });
 
 describe('app detail pages', () => {
-  const slugs = readdirSync(resolve(root, 'src/content/apps'))
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => f.replace(/\.md$/, ''));
-
-  it.each(slugs)('emits a page for %s unless it is hidden', (slug) => {
+  it.each(appSlugs)('emits a page for %s unless it is hidden', (slug) => {
     const source = readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8');
     const hidden = /^hidden:\s*true\s*$/m.test(source);
     expect(existsSync(dist(`apps/${slug}/index.html`))).toBe(!hidden);
@@ -111,9 +111,28 @@ describe('progressive enhancement', () => {
     expect(html).toContain('data-filter-mount');
   });
 
+  it('actually ships the filter script, not just its mount point', () => {
+    const html = read('index.html');
+    // The inverse of the check above: this string only exists inside
+    // filter.client.ts's injected-markup template literal, so it can only
+    // show up *inside* a <script> tag if the filter feature is bundled at
+    // all. A mount div with no script behind it would fail this.
+    const scripts = html.match(/<script[\s\S]*?<\/script>/g) ?? [];
+    expect(scripts.some((s) => s.includes('Search the suite'))).toBe(true);
+  });
+
   it('leaves every card visible and linked without JavaScript', () => {
     const html = read('index.html');
     expect(html).not.toMatch(/<(a|div)[^>]*data-filter-hidden/);
     expect((html.match(/href="\/apps\//g) ?? []).length).toBeGreaterThan(10);
+  });
+
+  it('never links to an app page that was not actually emitted', () => {
+    const html = read('index.html');
+    const hrefs = Array.from(html.matchAll(/href="\/apps\/([^"/]+)"/g)).map((m) => m[1]);
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const slug of hrefs) {
+      expect(existsSync(dist(`apps/${slug}/index.html`)), `no dist page for /apps/${slug}`).toBe(true);
+    }
   });
 });

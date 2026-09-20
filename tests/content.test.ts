@@ -14,7 +14,7 @@ const entries = files.map((f) => ({
 }));
 
 describe('app entries', () => {
-  it('has an entry for every property in the suite', () => {
+  it('the suite inventory is 18 properties (bump this deliberately when adding one)', () => {
     expect(files.length).toBe(18);
   });
 
