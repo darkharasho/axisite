@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles/site.css';
 
 interface Props {
@@ -7,6 +8,13 @@ interface Props {
 }
 
 const { title, description = 'Every app and web property in the axi suite.' } = Astro.props;
+
+const editorialPages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+const navLinks = [
+  { href: '/', label: 'Apps' },
+  ...editorialPages.map((entry) => ({ href: `/${entry.id}`, label: entry.data.title })),
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 <!doctype html>
 <html lang="en">
@@ -25,8 +33,13 @@ const { title, description = 'Every app and web property in the axi suite.' } = 
           <span class="axi-brand__name">axi<small>The suite</small></span>
         </a>
         <nav class="axi-tabs">
-          <a href="/">Apps</a>
-          <a href="/about">About</a>
+          {navLinks.map((link) => {
+            const linkPath = link.href.replace(/\/$/, '') || '/';
+            const active = linkPath === currentPath;
+            return (
+              <a href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a>
+            );
+          })}
         </nav>
       </div>
     </header>
