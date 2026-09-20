@@ -98,3 +98,22 @@ describe('editorial pages', () => {
     expect(read('about/index.html')).toContain('axi-prose');
   });
 });
+
+describe('progressive enhancement', () => {
+  it('server-renders no search input — the script injects it', () => {
+    const html = read('index.html');
+    // Astro inlines the small filter script directly into the page, so its
+    // template-literal source (which builds the real <input> at runtime)
+    // legitimately contains this text. Strip <script> content first so the
+    // check reflects what's actually server-rendered into the DOM.
+    const withoutScripts = html.replace(/<script[\s\S]*?<\/script>/g, '');
+    expect(withoutScripts).not.toContain('id="app-search"');
+    expect(html).toContain('data-filter-mount');
+  });
+
+  it('leaves every card visible and linked without JavaScript', () => {
+    const html = read('index.html');
+    expect(html).not.toMatch(/<(a|div)[^>]*data-filter-hidden/);
+    expect((html.match(/href="\/apps\//g) ?? []).length).toBeGreaterThan(10);
+  });
+});
