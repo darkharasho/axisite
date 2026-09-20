@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 
@@ -59,5 +59,24 @@ describe('landing page', () => {
   it('puts the featured apps first', () => {
     const html = read('index.html');
     expect(html.indexOf('data-section="featured"')).toBeLessThan(html.indexOf('data-section="combat-logs"'));
+  });
+});
+
+describe('app detail pages', () => {
+  const slugs = readdirSync(resolve(root, 'src/content/apps'))
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => f.replace(/\.md$/, ''));
+
+  it.each(slugs)('emits a page for %s unless it is hidden', (slug) => {
+    const source = readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8');
+    const hidden = /^hidden:\s*true\s*$/m.test(source);
+    expect(existsSync(dist(`apps/${slug}/index.html`))).toBe(!hidden);
+  });
+
+  it('links back to the landing page and ships the stylesheet', () => {
+    const html = read('apps/axiom/index.html');
+    expect(html).toContain('https://darkharasho.github.io/axi-design/v1/axi.css');
+    expect(html).toContain('href="/"');
+    expect(html).toContain('axi-prose');
   });
 });

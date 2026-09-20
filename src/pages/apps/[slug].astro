@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { chipClass, STATUS_LABEL } from '../../lib/categories';
+import { loadReleases, releaseChip } from '../../lib/releases';
+
+export async function getStaticPaths() {
+  const apps = await getCollection('apps');
+  return apps
+    .filter((entry) => !entry.data.hidden)
+    .map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const app = entry.data;
+const { Content } = await render(entry);
+const chip = app.repo ? releaseChip(loadReleases()[app.repo]) : undefined;
+const repoUrl = app.repo ? `https://github.com/${app.repo}` : undefined;
+---
+<Base title={`${app.name} — axi`} description={app.tagline}>
+  <p class="axi-eyebrow"><a href="/">&larr; The suite</a></p>
+
+  <div class="axi-row" style="--axi-row-gap: 14px; align-items: center">
+    {app.icon
+      ? <img src={`/icons/${app.icon}`} alt="" width="56" height="56" />
+      : <span class="axi-sigil" aria-hidden="true">{app.name.slice(0, 1).toUpperCase()}</span>}
+    <h1 style="margin: 0">{app.name}</h1>
+  </div>
+
+  <p>{app.tagline}</p>
+
+  <div class="axi-row" style="--axi-row-gap: 6px">
+    <span class={chipClass(app.status)}>{STATUS_LABEL[app.status]}</span>
+    {chip && <span class="axi-chip axi-chip--meta">{chip}</span>}
+    {(app.platforms ?? []).map((p) => <span class="axi-chip">{p}</span>)}
+  </div>
+
+  <div class="axi-prose"><Content /></div>
+
+  <div class="axi-row" style="--axi-row-gap: 10px">
+    {app.site && <a class="axi-btn axi-btn--primary" href={app.site}>Open {app.name}</a>}
+    {repoUrl && <a class="axi-btn" href={repoUrl}>Source on GitHub</a>}
+    {(app.links ?? []).map((l) => <a class="axi-btn axi-btn--ghost" href={l.url}>{l.label}</a>)}
+  </div>
+</Base>
