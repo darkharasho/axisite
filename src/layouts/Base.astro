@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Every app and web property in the axi suite.' } = Astro.props;
+
+const editorialPages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
+const navLinks = [
+  { href: '/', label: 'Apps' },
+  ...editorialPages.map((entry) => ({ href: `/${entry.id}`, label: entry.data.title })),
+];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="https://darkharasho.github.io/axi-design/v1/axi.css" />
+  </head>
+  <body>
+    <header class="axi-mast">
+      <div class="axi-mast__in">
+        <a class="axi-brand" href="/">
+          <span class="axi-sigil" aria-hidden="true">A</span>
+          <span class="axi-brand__name">axi<small>The suite</small></span>
+        </a>
+        <nav class="axi-tabs">
+          {navLinks.map((link) => {
+            const linkPath = link.href.replace(/\/$/, '') || '/';
+            const active = linkPath === currentPath;
+            return (
+              <a href={link.href} aria-current={active ? 'page' : undefined}>{link.label}</a>
+            );
+          })}
+        </nav>
+      </div>
+    </header>
+    <main class="axi-page">
+      <slot />
+    </main>
+  </body>
+</html>
