@@ -30,3 +30,34 @@ describe('build output', () => {
     expect(existsSync(resolve(root, 'src/styles/axi.css'))).toBe(false);
   });
 });
+
+describe('landing page', () => {
+  it('server-renders a card for every app', () => {
+    const html = read('index.html');
+    const cards = html.match(/data-slug="/g) ?? [];
+    expect(cards.length).toBe(18);
+  });
+
+  it('gives every card the attributes the filter script reads', () => {
+    const html = read('index.html');
+    expect((html.match(/data-category="/g) ?? []).length).toBe(18);
+    expect((html.match(/data-search="/g) ?? []).length).toBe(18);
+  });
+
+  it('strips stable and beta cards but not work-in-progress ones', () => {
+    const html = read('index.html');
+    expect(html).toContain('--axi-card-strip: var(--axi-ok)');
+    expect(html).toContain('--axi-card-strip: var(--axi-warn)');
+  });
+
+  it('uses no colour literal outside the accent', () => {
+    const css = readFileSync(resolve(root, 'src/styles/site.css'), 'utf8');
+    const hexes = css.match(/#[0-9a-fA-F]{3,8}\b/g) ?? [];
+    expect(hexes).toEqual(['#b06bff']);
+  });
+
+  it('puts the featured apps first', () => {
+    const html = read('index.html');
+    expect(html.indexOf('data-section="featured"')).toBeLessThan(html.indexOf('data-section="combat-logs"'));
+  });
+});

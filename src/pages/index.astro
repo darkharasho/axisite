@@ -1,9 +1,55 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import AppCard from '../components/AppCard.astro';
+import { CATEGORIES, CATEGORY_META } from '../lib/categories';
+
+const apps = await getCollection('apps');
+const featured = apps.filter((a) => a.data.featured);
+const byCategory = CATEGORIES
+  .map((c) => ({
+    category: c,
+    meta: CATEGORY_META[c],
+    items: apps
+      .filter((a) => a.data.category === c && !a.data.featured)
+      .sort((a, b) => a.data.name.localeCompare(b.data.name)),
+  }))
+  .filter((g) => g.items.length > 0)
+  .sort((a, b) => a.meta.order - b.meta.order);
 ---
 <Base title="axi — the suite">
   <div class="axi-stack site-hero">
     <p class="axi-eyebrow">The axi suite</p>
     <h1>Every axi app, in one place.</h1>
+    <p>
+      Tools for Guild Wars 2 — combat logs, WvW overlays, guild rosters, builds and
+      streaming. <a href="/apps/axiom">AxiOM</a> installs and launches the ones you want;
+      this page is the map of what exists.
+    </p>
   </div>
+
+  <div class="site-filters" data-filter-mount></div>
+
+  {featured.length > 0 && (
+    <section class="site-section" data-section="featured">
+      <div class="site-section__head">
+        <h2>Start here</h2>
+      </div>
+      <div class="axi-grid" style="--axi-grid-min: 300px">
+        {featured.map((entry) => <AppCard entry={entry} />)}
+      </div>
+    </section>
+  )}
+
+  {byCategory.map((group) => (
+    <section class="site-section" data-section={group.category}>
+      <div class="site-section__head">
+        <h2>{group.meta.label}</h2>
+        <p class="axi-card__kind">{group.meta.blurb}</p>
+      </div>
+      <div class="axi-grid" style="--axi-grid-min: 300px">
+        {group.items.map((entry) => <AppCard entry={entry} />)}
+      </div>
+    </section>
+  ))}
 </Base>

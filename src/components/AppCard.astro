@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { chipClass, STATUS_LABEL, strip } from '../lib/categories';
+import { loadReleases, releaseChip } from '../lib/releases';
+
+interface Props { entry: CollectionEntry<'apps'> }
+const { entry } = Astro.props;
+const app = entry.data;
+
+const stripColour = strip(app.status);
+const chip = app.repo ? releaseChip(loadReleases()[app.repo]) : undefined;
+const href = app.hidden ? undefined : `/apps/${entry.id}`;
+const glyph = app.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase();
+const haystack = `${app.name} ${app.tagline} ${(app.platforms ?? []).join(' ')}`.toLowerCase();
+const Tag = href ? 'a' : 'div';
+---
+<Tag
+  class:list={['axi-card', stripColour && 'axi-card--strip']}
+  href={href}
+  style={stripColour ? `--axi-card-strip: ${stripColour}` : undefined}
+  data-slug={entry.id}
+  data-category={app.category}
+  data-search={haystack}
+>
+  <div class="axi-card__head">
+    {app.icon
+      ? <img class="axi-card__glyph" src={`/icons/${app.icon}`} alt="" width="36" height="36" />
+      : <span class="axi-card__glyph">{glyph}</span>}
+    <span class="axi-card__title">
+      <span class="axi-card__name">{app.name}</span>
+      <span class="axi-card__kind">{(app.platforms ?? []).join(' · ')}</span>
+    </span>
+  </div>
+  <p>{app.tagline}</p>
+  <div class="axi-row" style="--axi-row-gap: 6px">
+    <span class={chipClass(app.status)}>{STATUS_LABEL[app.status]}</span>
+    {chip && <span class="axi-chip axi-chip--meta">{chip}</span>}
+  </div>
+  <div class="axi-card__meta">
+    {app.hidden ? 'Coming soon' : <span class="axi-card__go">Details &rarr;</span>}
+  </div>
+</Tag>
