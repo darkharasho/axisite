@@ -4,6 +4,7 @@ tagline: Uploads arcdps logs, summarizes WvW fights, and posts readable reports 
 category: stream-overlays
 status: stable
 repo: darkharasho/axibridge
+site: https://bridge.axi.link
 platforms: [windows, linux, web]
 icon: axibridge.png
 featured: true

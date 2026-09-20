@@ -4,6 +4,7 @@ tagline: A community wiki and technical reference for arcdps.
 category: reference-web
 status: stable
 repo: darkharasho/arcdps-wiki
+site: https://arcdps.axi.link
 platforms: [web]
 ---
 
