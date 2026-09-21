@@ -1,28 +1,149 @@
+/* axiwiki's own layout on top of axi-design.
+ *
+ * Everything here obeys docs/RULES.md in the axi-design repo: flat fills at
+ * full strength, outlines and hard offset blocks (never a blur), only the two
+ * form steps, and no colour literal but the accent below. Where something
+ * needs to be quieter it reaches for a neutral from the ramp rather than a
+ * tinted accent — rule 2. */
+
 :root {
   --axi-accent: #b06bff;
 }
 
-.site-hero {
-  max-width: 62ch;
+/* ---------------------------------------------------------------- masthead */
+
+.site-mast__aside {
+  margin-left: 18px;
 }
 
-.site-section + .site-section {
-  margin-top: 36px;
+/* ------------------------------------------------------------------ banner */
+
+/* The suite's one loud moment: a knockout accent panel. Flat fill, near-black
+ * ink, outlined and blocked like any other raised thing. */
+.site-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: var(--axi-gutter);
+  margin-top: 30px;
+  align-items: stretch;
 }
 
-.site-section__head {
+.site-banner {
+  --axi-panel-pad: 30px;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 14px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  background: var(--axi-accent);
+  color: var(--axi-accent-ink);
 }
+
+.site-banner h1 {
+  margin: 0;
+  max-width: 16ch;
+  font: var(--axi-t-display);
+  letter-spacing: var(--axi-ls-display);
+}
+
+.site-banner p {
+  margin: 0;
+  max-width: 46ch;
+  font: var(--axi-t-body);
+}
+
+/* Rule 7's family motif, used as the banner's only ornament. The filled half
+ * reads as a progress mark rather than a random flourish. */
+.site-banner__marks {
+  display: flex;
+  gap: 9px;
+}
+
+.site-banner__marks i {
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  border: var(--axi-border-control) solid var(--axi-ink-line);
+}
+
+.site-banner__marks i:nth-child(-n + 3) {
+  background: var(--axi-ink-line);
+}
+
+/* --------------------------------------------------------- release feed */
+
+.site-feed {
+  --axi-panel-pad: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-feed__head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 18px;
+  border-bottom: var(--axi-border-control) solid var(--axi-rule);
+  font: var(--axi-t-label);
+  letter-spacing: var(--axi-ls-label);
+  text-transform: uppercase;
+  color: var(--axi-text-dim);
+}
+
+.site-feed ol {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-feed li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 4px 11px;
+  padding: 12px 18px;
+  border-top: var(--axi-border-control) solid var(--axi-rule);
+}
+
+.site-feed li:first-child {
+  border-top: 0;
+}
+
+.site-feed .axi-chip {
+  justify-self: end;
+}
+
+.site-feed__name {
+  font: 800 13.5px/1.2 var(--axi-sans);
+  color: var(--axi-text);
+  text-decoration: none;
+}
+
+.site-feed__name:hover {
+  color: var(--axi-accent);
+}
+
+.site-feed__when {
+  grid-column: 2 / -1;
+  font: var(--axi-t-micro);
+  letter-spacing: var(--axi-ls-micro);
+  color: var(--axi-text-faint);
+}
+
+.site-feed__empty {
+  padding: 16px 18px;
+  font: var(--axi-t-small);
+  color: var(--axi-text-faint);
+}
+
+/* ----------------------------------------------------------------- filters */
 
 .site-filters {
-  margin: 20px 0 28px;
-}
-
-[data-filter-hidden] {
-  display: none;
+  position: sticky;
+  top: 66px;
+  z-index: 30;
+  padding: 26px 0 22px;
+  background: var(--axi-ground);
 }
 
 .site-filter-empty {
@@ -31,4 +152,287 @@
 
 .site-filter-empty[hidden] {
   display: none;
+}
+
+[data-filter-hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- sections */
+
+.site-section + .site-section {
+  margin-top: 44px;
+}
+
+.site-section__head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.site-section__head h2 {
+  margin: 0;
+  font: var(--axi-t-h2);
+  letter-spacing: var(--axi-ls-h2);
+}
+
+.site-section__mark {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  transform: rotate(45deg);
+  background: var(--axi-accent);
+  border: var(--axi-border-control) solid var(--axi-ink-line);
+}
+
+.site-section__blurb {
+  margin: 0 0 0 auto;
+  font: var(--axi-t-small);
+  color: var(--axi-text-faint);
+}
+
+/* ------------------------------------------------------------------- cards */
+
+/* The sigil, scaled up and bled off the corner — rule 7. Drawn in a neutral
+ * from the ramp so it is texture, not a second accent. */
+.site-card__sigil {
+  position: absolute;
+  right: -34px;
+  bottom: -34px;
+  width: 104px;
+  height: 104px;
+  z-index: 0;
+  transform: rotate(45deg);
+  border: var(--axi-border-panel) solid var(--axi-rule);
+  pointer-events: none;
+}
+
+.axi-card > *:not(.site-card__sigil) {
+  position: relative;
+}
+
+/* An unreleased app is not a link, so it must not behave like one. */
+.site-card--soon {
+  cursor: default;
+}
+
+.site-card--soon:hover {
+  transform: none;
+  box-shadow: var(--axi-offset-panel) var(--axi-offset-panel) 0 var(--axi-ink-line);
+}
+
+/* ------------------------------------------------------- app detail page */
+
+.site-crumb {
+  padding-top: 26px;
+}
+
+.site-crumb a {
+  color: var(--axi-text-faint);
+  text-decoration: none;
+}
+
+.site-crumb a:hover {
+  color: var(--axi-accent);
+}
+
+.site-apphead {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 12px 0 26px;
+  border-bottom: var(--axi-border-control) solid var(--axi-rule);
+}
+
+.site-apphead__glyph {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: var(--axi-border-control) solid var(--axi-ink-line);
+  background: var(--axi-surface-raised);
+  font: 900 22px/1 var(--axi-sans);
+}
+
+.site-apphead h1 {
+  margin: 0;
+  font: var(--axi-t-h1);
+  letter-spacing: var(--axi-ls-h1);
+}
+
+.site-apphead__tag {
+  margin: 8px 0 0;
+  max-width: 60ch;
+  font: var(--axi-t-body);
+  color: var(--axi-text-dim);
+}
+
+.site-app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 286px;
+  gap: 40px;
+  align-items: start;
+  padding-top: 30px;
+}
+
+.site-app__side {
+  position: sticky;
+  top: 90px;
+  display: grid;
+  gap: 14px;
+}
+
+.site-app__acts {
+  display: grid;
+  gap: 8px;
+}
+
+.site-app__acts .axi-btn {
+  justify-content: center;
+}
+
+.site-facts {
+  --axi-panel-pad: 16px;
+}
+
+.site-facts dl {
+  margin: 0;
+  display: grid;
+}
+
+.site-facts dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: var(--axi-border-control) solid var(--axi-rule);
+}
+
+.site-facts dl > div:first-child {
+  border-top: 0;
+}
+
+.site-facts dt {
+  margin: 0;
+  font: var(--axi-t-label);
+  letter-spacing: var(--axi-ls-label);
+  text-transform: uppercase;
+  color: var(--axi-text-faint);
+}
+
+.site-facts dd {
+  margin: 0;
+  text-align: right;
+  font: 800 12.5px/1.4 var(--axi-sans);
+  color: var(--axi-text);
+}
+
+.site-related {
+  margin-top: 54px;
+  padding-top: 26px;
+  border-top: var(--axi-border-control) solid var(--axi-rule);
+}
+
+.site-related h2 {
+  margin: 0 0 16px;
+  font: var(--axi-t-h3);
+  letter-spacing: var(--axi-ls-h3);
+}
+
+/* -------------------------------------------------------- editorial pages */
+
+.site-doc {
+  padding-top: 30px;
+}
+
+.site-doc h1 {
+  margin: 10px 0 0;
+  font: var(--axi-t-h1);
+  letter-spacing: var(--axi-ls-h1);
+}
+
+.site-doc__lede {
+  margin: 10px 0 0;
+  font: var(--axi-t-body);
+  color: var(--axi-text-dim);
+}
+
+.site-doc__rule {
+  height: 0;
+  margin: 24px 0 26px;
+  border-top: var(--axi-border-control) solid var(--axi-rule);
+}
+
+/* ------------------------------------------------------------------ footer */
+
+.site-foot {
+  margin-top: 64px;
+  border-top: var(--axi-border-panel) solid var(--axi-ink-line);
+  background: var(--axi-surface);
+}
+
+.site-foot__in {
+  max-width: var(--axi-page);
+  margin-inline: auto;
+  padding: 26px var(--axi-gutter);
+  display: flex;
+  gap: 12px 26px;
+  flex-wrap: wrap;
+  align-items: center;
+  font: var(--axi-t-small);
+  color: var(--axi-text-faint);
+}
+
+.site-foot__sig {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-foot__sig i {
+  width: 11px;
+  height: 11px;
+  transform: rotate(45deg);
+  background: var(--axi-accent);
+  border: var(--axi-border-control) solid var(--axi-ink-line);
+}
+
+.site-foot__links {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.site-foot a {
+  color: var(--axi-text-dim);
+  text-decoration: none;
+}
+
+.site-foot a:hover {
+  color: var(--axi-accent);
+}
+
+.site-foot__fine {
+  flex-basis: 100%;
+  font: var(--axi-t-micro);
+  letter-spacing: var(--axi-ls-micro);
+  color: var(--axi-text-faint);
+}
+
+/* ------------------------------------------------------------ narrow view */
+
+@media (max-width: 900px) {
+  .site-top,
+  .site-app {
+    grid-template-columns: 1fr;
+  }
+
+  .site-app__side {
+    position: static;
+  }
 }

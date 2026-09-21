@@ -11,8 +11,11 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 <Base title={`${entry.data.title} — axi`} description={entry.data.description}>
-  <div class="axi-page--narrow">
+  <div class="axi-page--narrow site-doc">
+    <p class="axi-eyebrow"><a href="/">The suite</a></p>
     <h1>{entry.data.title}</h1>
+    <p class="site-doc__lede">{entry.data.description}</p>
+    <div class="site-doc__rule" aria-hidden="true"></div>
     <div class="axi-prose"><Content /></div>
   </div>
 </Base>

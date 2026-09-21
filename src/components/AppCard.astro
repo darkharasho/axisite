@@ -15,13 +15,14 @@ const haystack = `${app.name} ${app.tagline} ${(app.platforms ?? []).join(' ')} 
 const Tag = href ? 'a' : 'div';
 ---
 <Tag
-  class:list={['axi-card', stripColour && 'axi-card--strip']}
+  class:list={['axi-card', stripColour && 'axi-card--strip', app.hidden && 'site-card--soon']}
   href={href}
   style={stripColour ? `--axi-card-strip: ${stripColour}` : undefined}
   data-slug={entry.id}
   data-category={app.category}
   data-search={haystack}
 >
+  <i class="site-card__sigil" aria-hidden="true"></i>
   <div class="axi-card__head">
     {app.icon
       ? <img class="axi-card__glyph" src={`/icons/${app.icon}`} alt="" width="36" height="36" />

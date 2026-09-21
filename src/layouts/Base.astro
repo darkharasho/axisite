@@ -11,10 +11,11 @@ const { title, description = 'Every app and web property in the axi suite.' } = 
 
 const editorialPages = (await getCollection('pages')).sort((a, b) => a.data.order - b.data.order);
 const navLinks = [
-  { href: '/', label: 'Apps' },
+  { href: '/', label: 'The suite' },
   ...editorialPages.map((entry) => ({ href: `/${entry.id}`, label: entry.data.title })),
 ];
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const org = 'https://github.com/darkharasho';
 ---
 <!doctype html>
 <html lang="en">
@@ -41,10 +42,31 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
             );
           })}
         </nav>
+        <span class="site-mast__aside">
+          <a class="axi-btn axi-btn--ghost" href={org}>GitHub</a>
+        </span>
       </div>
     </header>
+
     <main class="axi-page">
       <slot />
     </main>
+
+    <footer class="site-foot">
+      <div class="site-foot__in">
+        <span class="site-foot__sig">
+          <i aria-hidden="true"></i>
+          Built by darkharasho for the WvW crowd.
+        </span>
+        <span class="site-foot__links">
+          <a href={org}>GitHub</a>
+          <a href="https://darkharasho.github.io/axi-design/">axi-design</a>
+          {editorialPages.map((entry) => <a href={`/${entry.id}`}>{entry.data.title}</a>)}
+        </span>
+        <span class="site-foot__fine">
+          Not affiliated with ArenaNet &middot; versions on this site refresh nightly from GitHub releases
+        </span>
+      </div>
+    </footer>
   </body>
 </html>

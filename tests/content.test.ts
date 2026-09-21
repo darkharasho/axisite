@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import matter from 'gray-matter';
 import { describe, expect, it } from 'vitest';
-import { CATEGORIES } from '../src/lib/categories';
+import { CATEGORIES, platformLabel } from '../src/lib/categories';
 import { appSchema } from '../src/lib/schema';
 
 const root = resolve(__dirname, '..');
@@ -54,5 +54,15 @@ describe('app entries', () => {
   it('excludes OSRS projects', () => {
     const banned = ['combat-skill-calculator', 'runelite-resize-plugin', 'wise-old-claude'];
     for (const b of banned) expect(entries.map((e) => e.slug)).not.toContain(b);
+  });
+});
+
+describe('platformLabel', () => {
+  it('capitalises an ordinary platform slug', () => {
+    expect(platformLabel('windows')).toBe('Windows');
+  });
+
+  it('spells the irregular ones the way they are written', () => {
+    expect(platformLabel('macos')).toBe('macOS');
   });
 });
