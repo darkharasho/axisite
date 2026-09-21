@@ -1,7 +1,7 @@
 {
-  "name": "axiwiki",
+  "name": "axisite",
   "version": "1.0.0",
-  "description": "axiwiki is the front-page landing site for the axi suite of apps. It acts as a central hub linking out to every axi app and web property — including the ACRDPS wiki and the addon checker — with consistent branding from the shared axi-design style system. It lives alongside the other axi projects in Docs/Github.",
+  "description": "axisite is the front-page landing site for the axi suite of apps. It acts as a central hub linking out to every axi app and web property — including the ACRDPS wiki and the addon checker — with consistent branding from the shared axi-design style system. It lives alongside the other axi projects in Docs/Github.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -14,16 +14,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darkharasho/axiwiki.git"
+    "url": "git+https://github.com/darkharasho/axisite.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/darkharasho/axiwiki/issues"
+    "url": "https://github.com/darkharasho/axisite/issues"
   },
-  "homepage": "https://github.com/darkharasho/axiwiki#readme",
+  "homepage": "https://github.com/darkharasho/axisite#readme",
   "dependencies": {
     "astro": "^5.18.2",
     "zod": "^3.25.76"

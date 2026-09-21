@@ -1,6 +1,6 @@
-# axiwiki
+# axisite
 
-axiwiki is the web front door for the axi suite of Guild Wars 2 tools — a
+axisite is the web front door for the axi suite of Guild Wars 2 tools — a
 static, data-driven hub that links out to every axi app and web property
 (arcdps plugins, build tools, the ACRDPS wiki, the addon checker, and more),
 styled with the shared axi-design system. axi-design is always linked from
@@ -8,9 +8,9 @@ its CDN (`https://darkharasho.github.io/axi-design/v1/axi.css`) — it is
 never vendored into this repo.
 
 It's the counterpart to **axiom**, the desktop launcher: axiom installs and
-launches what you have installed; axiwiki is the browsable map of what
+launches what you have installed; axisite is the browsable map of what
 exists, including things axiom doesn't manage. Both list the same suite —
-axiwiki just doesn't require you to have anything installed to see it.
+axisite just doesn't require you to have anything installed to see it.
 
 ## Adding an app
 

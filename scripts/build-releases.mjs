@@ -18,7 +18,7 @@ export function repoList() {
 export async function collectReleases(repos, { fetchImpl = fetch, token } = {}) {
   const data = {};
   const failures = [];
-  const headers = { accept: 'application/vnd.github+json', 'user-agent': 'axiwiki-build' };
+  const headers = { accept: 'application/vnd.github+json', 'user-agent': 'axisite-build' };
   if (token) headers.authorization = `Bearer ${token}`;
 
   for (const repo of repos) {
