@@ -14,6 +14,7 @@ export const appSchema = z.object({
   icon: z.string().regex(/^[\w.-]+\.(png|svg|webp)$/, 'icon must be a bare filename in public/icons').optional(),
   featured: z.boolean().default(false),
   hidden: z.boolean().default(false),
+  aliases: z.array(z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'alias must be a url slug')).optional(),
   links: z.array(z.object({ label: z.string().min(1), url: z.string().url() })).optional(),
 });
 

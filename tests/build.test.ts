@@ -1,6 +1,7 @@
 import { execSync } from 'node:child_process';
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import matter from 'gray-matter';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 const root = resolve(__dirname, '..');
@@ -146,12 +147,13 @@ describe('progressive enhancement', () => {
   });
 });
 
-const hiddenSource = (slug: string) =>
-  readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8');
-const visibleAppSlugs = appSlugs.filter(
-  (slug) => !/^hidden:\s*true\s*$/m.test(hiddenSource(slug)),
-);
+const frontmatter = (slug: string) =>
+  matter(readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8')).data;
+const visibleAppSlugs = appSlugs.filter((slug) => !frontmatter(slug).hidden);
 const hiddenAppSlugs = appSlugs.filter((slug) => !visibleAppSlugs.includes(slug));
+const aliasPairs = visibleAppSlugs.flatMap((slug) =>
+  ((frontmatter(slug).aliases as string[] | undefined) ?? []).map((alias) => [alias, slug]),
+);
 
 // The site only ever links the full /apps/<slug> form, so these URLs stayed
 // broken for as long as nobody typed one by hand. Both are the shapes a
@@ -179,5 +181,23 @@ describe('URLs people type rather than click', () => {
   it('leaves the editorial pages themselves, not redirects to them', () => {
     expect(read('about/index.html')).toContain('axi-prose');
     expect(read('getting-started/index.html')).toContain('axi-prose');
+  });
+
+  // An app's slug is not always what people call it. The risk guide is "the
+  // addon checker" to everyone who uses it, so that name is the one they type.
+  it('redirects every name an app also goes by', () => {
+    expect(aliasPairs.length).toBeGreaterThan(0);
+    for (const [alias, slug] of aliasPairs) {
+      expect(existsSync(dist(`${alias}/index.html`)), `no /${alias} redirect`).toBe(true);
+      expect(read(`${alias}/index.html`)).toContain(`/apps/${slug}`);
+    }
+  });
+
+  // A redirect stub IS dist/<name>/index.html, so the explicit-index form a
+  // bookmark carries resolves without any extra work - as long as it stays true.
+  it('serves the explicit /index.html form of a redirect', () => {
+    for (const [alias] of aliasPairs) {
+      expect(existsSync(dist(`${alias}/index.html`))).toBe(true);
+    }
   });
 });

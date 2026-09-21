@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
+import matter from 'gray-matter';
 
 const contentDir = (name) =>
   fileURLToPath(new URL(`./src/content/${name}/`, import.meta.url));
@@ -10,21 +11,19 @@ const slugsIn = (name) =>
     .filter((f) => f.endsWith('.md'))
     .map((f) => f.replace(/\.md$/, ''));
 
-const isHidden = (slug) =>
-  /^hidden:\s*true\s*$/m.test(
-    readFileSync(`${contentDir('apps')}${slug}.md`, 'utf8'),
-  );
+const frontmatter = (slug) =>
+  matter(readFileSync(`${contentDir('apps')}${slug}.md`, 'utf8')).data;
 
-// The suite is only ever linked as /apps/<slug>, so the two URL shapes a
-// person types from memory - the bare slug, and the /apps directory itself -
-// used to fall through to the 404 page. Redirect both instead. A hidden app
-// has no detail page to reach, so it gets no redirect; an editorial slug
-// already owns its route and must not be shadowed.
+// The suite is only ever linked as /apps/<slug>, so the URL shapes a person
+// types from memory - the bare slug, a name the app goes by, and the /apps
+// directory itself - used to fall through to the 404 page. Redirect them all
+// instead. A hidden app has no detail page to reach, so it gets no redirect;
+// an editorial slug already owns its route and must not be shadowed.
 const editorial = new Set(slugsIn('pages'));
 const appRedirects = Object.fromEntries(
   slugsIn('apps')
-    .filter((slug) => !isHidden(slug) && !editorial.has(slug))
-    .map((slug) => [`/${slug}`, `/apps/${slug}`]),
+    .filter((slug) => !frontmatter(slug).hidden && !editorial.has(slug))
+    .flatMap((slug) => [slug, ...(frontmatter(slug).aliases ?? [])].map((from) => [`/${from}`, `/apps/${slug}`])),
 );
 
 export default defineConfig({
