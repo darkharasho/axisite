@@ -14,8 +14,8 @@ const entries = files.map((f) => ({
 }));
 
 describe('app entries', () => {
-  it('the suite inventory is 18 properties (bump this deliberately when adding one)', () => {
-    expect(files.length).toBe(18);
+  it('the suite inventory is 17 properties (bump this deliberately when adding one)', () => {
+    expect(files.length).toBe(17);
   });
 
   it.each(entries)('$slug validates against the schema', (entry) => {
