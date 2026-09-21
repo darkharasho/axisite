@@ -160,12 +160,8 @@ const frontmatter = (slug: string) =>
   matter(readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8')).data;
 const visibleAppSlugs = appSlugs.filter((slug) => !frontmatter(slug).hidden);
 const hiddenAppSlugs = appSlugs.filter((slug) => !visibleAppSlugs.includes(slug));
-// addon-checker is served as static files, not as a redirect, so exclude it from alias tests
-const staticServicedPaths = new Set(['addon-checker']);
 const aliasPairs = visibleAppSlugs.flatMap((slug) =>
-  ((frontmatter(slug).aliases as string[] | undefined) ?? [])
-    .filter((alias) => !staticServicedPaths.has(alias))
-    .map((alias) => [alias, slug]),
+  ((frontmatter(slug).aliases as string[] | undefined) ?? []).map((alias) => [alias, slug]),
 );
 
 // The site only ever links the full /apps/<slug> form, so these URLs stayed
@@ -198,13 +194,7 @@ describe('URLs people type rather than click', () => {
 
   // An app's slug is not always what people call it. The risk guide is "the
   // addon checker" to everyone who uses it, so that name is the one they type.
-  // The addon-checker is served as static files rather than as a redirect, so
-  // it's excluded from this test (staticServicedPaths).
   it('redirects every name an app also goes by', () => {
-    if (aliasPairs.length === 0) {
-      // Skip if there are no remaining aliases after filtering out static-served paths
-      return;
-    }
     for (const [alias, slug] of aliasPairs) {
       expect(existsSync(dist(`${alias}/index.html`)), `no /${alias} redirect`).toBe(true);
       expect(read(`${alias}/index.html`)).toContain(`/apps/${slug}`);
@@ -244,5 +234,12 @@ describe('the addon checker', () => {
     const app = readFileSync(resolve(root, 'public/addon-checker/app.js'), 'utf8');
     expect(app).toContain("fetch('data/catalog.json')");
     expect(app).not.toContain("fetch('/data/");
+  });
+
+  // The alias redirect is gone because the real page took its path. The
+  // explicit-index form a bookmark carries has to keep resolving - and now it
+  // resolves to the page itself rather than to a stub.
+  it('answers the URL a bookmark carries', () => {
+    expect(read('addon-checker/index.html')).toContain('GW2');
   });
 });

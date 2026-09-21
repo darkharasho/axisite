@@ -78,8 +78,11 @@ describe('app aliases', () => {
     ((e.data.aliases as string[] | undefined) ?? []).map((alias) => ({ alias, slug: e.slug })),
   );
 
-  it('declares at least one, so the rest of this suite has something to guard', () => {
-    expect(aliases.length).toBeGreaterThan(0);
+  // No app declares an alias today: the addon checker's became a real page.
+  // The guards below are still live - they run against whatever the next
+  // alias is - so this asserts the shape rather than a count.
+  it('is a list, empty or not', () => {
+    expect(Array.isArray(aliases)).toBe(true);
   });
 
   it('never shadows an app slug or an editorial page', () => {
@@ -98,6 +101,20 @@ describe('app aliases', () => {
     for (const { alias, slug } of aliases) {
       const hidden = entries.find((e) => e.slug === slug)?.data.hidden === true;
       expect(hidden, `alias ${alias} redirects to hidden ${slug}`).toBe(false);
+    }
+  });
+
+  // public/ is copied into the site verbatim, so a top-level directory there is
+  // a URL just as much as an app slug is. An alias colliding with one would put
+  // a redirect stub and a real page at the same path.
+  it('never shadows something served out of public/', () => {
+    const served = new Set(
+      readdirSync(resolve(root, 'public'), { withFileTypes: true })
+        .filter((e) => e.isDirectory())
+        .map((e) => e.name),
+    );
+    for (const { alias } of aliases) {
+      expect(served.has(alias), `alias ${alias} shadows public/${alias}`).toBe(false);
     }
   });
 });
