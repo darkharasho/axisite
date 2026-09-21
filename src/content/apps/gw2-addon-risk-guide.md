@@ -4,7 +4,7 @@ tagline: Which GW2 addons are tolerated, and what risk comes with running them.
 category: reference-web
 status: stable
 repo: darkharasho/gw2-addon-risk-guide
-site: https://darkharasho.github.io/gw2-addon-risk-guide/
+site: https://axi.wiki/addon-checker/
 platforms: [web]
 aliases: [addon-checker]
 ---

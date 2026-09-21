@@ -19,11 +19,15 @@ const frontmatter = (slug) =>
 // directory itself - used to fall through to the 404 page. Redirect them all
 // instead. A hidden app has no detail page to reach, so it gets no redirect;
 // an editorial slug already owns its route and must not be shadowed.
+// The addon-checker is served as static files rather than as an app page,
+// so its alias should not generate a redirect.
 const editorial = new Set(slugsIn('pages'));
+const staticPaths = new Set(['addon-checker']);
 const appRedirects = Object.fromEntries(
   slugsIn('apps')
     .filter((slug) => !frontmatter(slug).hidden && !editorial.has(slug))
-    .flatMap((slug) => [slug, ...(frontmatter(slug).aliases ?? [])].map((from) => [`/${from}`, `/apps/${slug}`])),
+    .flatMap((slug) => [slug, ...(frontmatter(slug).aliases ?? [])].map((from) => [`/${from}`, `/apps/${slug}`]))
+    .filter(([from]) => !staticPaths.has(from.slice(1))),
 );
 
 export default defineConfig({

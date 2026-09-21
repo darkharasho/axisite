@@ -160,8 +160,12 @@ const frontmatter = (slug: string) =>
   matter(readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8')).data;
 const visibleAppSlugs = appSlugs.filter((slug) => !frontmatter(slug).hidden);
 const hiddenAppSlugs = appSlugs.filter((slug) => !visibleAppSlugs.includes(slug));
+// addon-checker is served as static files, not as a redirect, so exclude it from alias tests
+const staticServicedPaths = new Set(['addon-checker']);
 const aliasPairs = visibleAppSlugs.flatMap((slug) =>
-  ((frontmatter(slug).aliases as string[] | undefined) ?? []).map((alias) => [alias, slug]),
+  ((frontmatter(slug).aliases as string[] | undefined) ?? [])
+    .filter((alias) => !staticServicedPaths.has(alias))
+    .map((alias) => [alias, slug]),
 );
 
 // The site only ever links the full /apps/<slug> form, so these URLs stayed
@@ -194,8 +198,13 @@ describe('URLs people type rather than click', () => {
 
   // An app's slug is not always what people call it. The risk guide is "the
   // addon checker" to everyone who uses it, so that name is the one they type.
+  // The addon-checker is served as static files rather than as a redirect, so
+  // it's excluded from this test (staticServicedPaths).
   it('redirects every name an app also goes by', () => {
-    expect(aliasPairs.length).toBeGreaterThan(0);
+    if (aliasPairs.length === 0) {
+      // Skip if there are no remaining aliases after filtering out static-served paths
+      return;
+    }
     for (const [alias, slug] of aliasPairs) {
       expect(existsSync(dist(`${alias}/index.html`)), `no /${alias} redirect`).toBe(true);
       expect(read(`${alias}/index.html`)).toContain(`/apps/${slug}`);
@@ -208,5 +217,32 @@ describe('URLs people type rather than click', () => {
     for (const [alias] of aliasPairs) {
       expect(existsSync(dist(`${alias}/index.html`))).toBe(true);
     }
+  });
+});
+
+// The addon checker is served as static files Astro copies rather than pages
+// Astro renders, so nothing in the build would fail if the directory vanished.
+// These assertions are the only thing standing between a bad move and a silent
+// 404 on the app people actually use.
+describe('the addon checker', () => {
+  it('ships its pages', () => {
+    for (const page of ['addon-checker/index.html', 'addon-checker/policy.html']) {
+      expect(existsSync(dist(page)), `missing ${page}`).toBe(true);
+    }
+  });
+
+  it('ships the data those pages fetch', () => {
+    for (const file of ['catalog', 'conduct', 'overrides', 'policies']) {
+      expect(existsSync(dist(`addon-checker/data/${file}.json`)), `missing ${file}.json`).toBe(true);
+    }
+  });
+
+  // app.js fetches 'data/catalog.json' with no leading slash so the page works
+  // from a subdirectory. An absolute path would resolve to the site root and
+  // 404 - the exact bug the relative form was written to avoid.
+  it('fetches its data by a relative path', () => {
+    const app = readFileSync(resolve(root, 'public/addon-checker/app.js'), 'utf8');
+    expect(app).toContain("fetch('data/catalog.json')");
+    expect(app).not.toContain("fetch('/data/");
   });
 });
