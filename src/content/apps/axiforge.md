@@ -2,6 +2,7 @@
 name: AxiForge
 tagline: Create Guild Wars 2 builds and publish them as a static build site.
 category: builds
+icon: axiforge.png
 status: stable
 repo: darkharasho/axiforge
 site: https://axiforge.com

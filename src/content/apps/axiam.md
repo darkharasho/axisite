@@ -2,6 +2,7 @@
 name: AxiAM
 tagline: A desktop account launcher built for fast, secure multi-account workflow.
 category: guild-community
+icon: axiam.png
 status: stable
 repo: darkharasho/axiam
 site: https://darkharasho.github.io/axiam/
