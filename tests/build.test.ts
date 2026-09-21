@@ -39,6 +39,15 @@ describe('build output', () => {
     expect(existsSync(resolve(root, 'public/axi.css'))).toBe(false);
     expect(existsSync(resolve(root, 'src/styles/axi.css'))).toBe(false);
   });
+
+  // The custom domain and the canonical base are two halves of one fact. If
+  // they disagree, every canonical URL points at a domain Pages does not serve.
+  it('serves one custom domain, and makes it the canonical base', () => {
+    const cname = readFileSync(resolve(root, 'public/CNAME'), 'utf8').trim();
+    const config = readFileSync(resolve(root, 'astro.config.mjs'), 'utf8');
+    expect(cname).toBe('axi.wiki');
+    expect(config).toContain(`site: 'https://${cname}'`);
+  });
 });
 
 const appSlugs = readdirSync(resolve(root, 'src/content/apps'))

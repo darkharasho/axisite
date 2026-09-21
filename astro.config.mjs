@@ -27,7 +27,7 @@ const appRedirects = Object.fromEntries(
 );
 
 export default defineConfig({
-  site: 'https://axi.space',
+  site: 'https://axi.wiki',
   output: 'static',
   trailingSlash: 'ignore',
   redirects: {

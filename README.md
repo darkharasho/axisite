@@ -97,15 +97,15 @@ npm run build   # refresh release data, then build the static site into dist/
 ## Deployment
 
 The site deploys to GitHub Pages on every push to `main` and lives at
-`axi.space` (see `public/CNAME`). The domain's DNS is held in Cloudflare:
+`axi.wiki` (see `public/CNAME`). The domain's DNS is held in Cloudflare:
 four `A` records on the apex pointing at `185.199.108.153`,
 `185.199.109.153`, `185.199.110.153` and `185.199.111.153`, plus a `www`
 `CNAME` to `darkharasho.github.io`. All of them are DNS-only — proxying
 them through Cloudflare would break the Pages TLS certificate.
 
-The old domain, `axi.wiki`, no longer reaches Pages (a Pages site serves
-exactly one custom domain), so its zone redirects instead: its records
-*are* proxied, and a single redirect rule sends `axi.wiki` and
-`www.axi.wiki` to the same path on `axi.space` with a 301, query string
-intact. Proxying is what makes that work — the rule runs at Cloudflare's
-edge, so no origin is ever contacted.
+`axi.space` no longer reaches Pages (a Pages site serves exactly one
+custom domain), so its zone redirects instead: its records *are* proxied,
+and a single redirect rule sends `axi.space` and `www.axi.space` to the
+same path on `axi.wiki` with a 301, query string intact. Proxying is what
+makes that work — the rule runs at Cloudflare's edge, so no origin is ever
+contacted.
