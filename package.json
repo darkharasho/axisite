@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "node scripts/build-releases.mjs && astro build",
     "preview": "astro preview",
-    "test": "vitest run --pool=forks --poolOptions.forks.maxForks=2"
+    "test": "vitest run --pool=forks --poolOptions.forks.maxForks=2",
+    "catalog": "node scripts/catalog/build-catalog.mjs"
   },
   "repository": {
     "type": "git",
