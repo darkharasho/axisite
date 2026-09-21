@@ -96,9 +96,9 @@ npm run build   # refresh release data, then build the static site into dist/
 
 ## Deployment
 
-The site deploys to GitHub Pages on every push to `main` and is meant to
-live at `axi.wiki` (see `public/CNAME`). Until `axi.wiki`'s DNS points at
-GitHub Pages — an `A` record set to `185.199.108.153`, `185.199.109.153`,
-`185.199.110.153` and `185.199.111.153`, or a `CNAME` to
-`darkharasho.github.io` — the deploy will publish successfully but the
-domain will not resolve to it.
+The site deploys to GitHub Pages on every push to `main` and lives at
+`axi.space` (see `public/CNAME`). The domain's DNS is held in Cloudflare:
+four `A` records on the apex pointing at `185.199.108.153`,
+`185.199.109.153`, `185.199.110.153` and `185.199.111.153`, plus a `www`
+`CNAME` to `darkharasho.github.io`. All of them are DNS-only — proxying
+them through Cloudflare would break the Pages TLS certificate.
