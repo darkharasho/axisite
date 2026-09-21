@@ -1,6 +1,10 @@
 name: ci
 on:
   pull_request:
+  # Work also reaches main by direct push, and pages.yml deploys without
+  # running tests - so without this, a pushed branch could deploy untested.
+  push:
+    branches: [main]
 
 permissions:
   contents: read

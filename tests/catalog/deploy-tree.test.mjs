@@ -20,9 +20,12 @@ function collectFiles(dir) {
   return out
 }
 
+// Three forms reach a module: `from '...'`, a side-effect `import '...'`, and
+// a dynamic `import('...')`. Matching only the first would let the other two
+// escape site/ unnoticed, which is the whole thing this guard exists to catch.
 function importSpecifiers(source) {
   const specifiers = []
-  const re = /from\s+['"]([^'"]+)['"]/g
+  const re = /(?:from\s*|\bimport\s*\(?\s*)['"]([^'"]+)['"]/g
   let m
   while ((m = re.exec(source))) specifiers.push(m[1])
   return specifiers

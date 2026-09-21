@@ -3,7 +3,7 @@ name: GW2 Addon Risk Guide
 tagline: Which GW2 addons are tolerated, and what risk comes with running them.
 category: reference-web
 status: stable
-repo: darkharasho/gw2-addon-risk-guide
+repo: darkharasho/axisite
 site: https://axi.wiki/addon-checker/
 platforms: [web]
 ---

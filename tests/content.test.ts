@@ -79,42 +79,56 @@ describe('app aliases', () => {
   );
 
   // No app declares an alias today: the addon checker's became a real page.
-  // The guards below are still live - they run against whatever the next
-  // alias is - so this asserts the shape rather than a count.
-  it('is a list, empty or not', () => {
-    expect(Array.isArray(aliases)).toBe(true);
+  // With an empty list every guard below passes without testing anything, so
+  // the canary runs the same collision check against a name that IS taken. A
+  // guard that quietly stopped working fails there whether or not a real alias
+  // exists to catch it.
+  const collisions = (names: string[], taken: Set<string>) => names.filter((n) => taken.has(n));
+
+  // public/ is copied into the site verbatim, so a top-level directory there is
+  // a URL just as much as an app slug or an editorial page is.
+  const servedFromPublic = () =>
+    readdirSync(resolve(root, 'public'), { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name);
+
+  const taken = () => new Set([...entries.map((e) => e.slug), ...editorial, 'apps', ...servedFromPublic()]);
+
+  it('catches a collision when there is one to catch', () => {
+    expect(collisions(['about', 'addon-checker', 'a-name-nothing-uses'], taken())).toEqual([
+      'about',
+      'addon-checker',
+    ]);
   });
 
-  it('never shadows an app slug or an editorial page', () => {
-    const taken = new Set([...entries.map((e) => e.slug), ...editorial, 'apps']);
-    for (const { alias } of aliases) {
-      expect(taken.has(alias), `alias ${alias} shadows a real page`).toBe(false);
-    }
+  it('never shadows an app slug, an editorial page, or something served out of public/', () => {
+    const names = aliases.map((a) => a.alias);
+    expect(collisions(names, taken()), `alias shadows a real page`).toEqual([]);
+  });
+
+  // astro.config.mjs emits a top-level redirect for the bare slug too, not only
+  // for aliases, so a slug collides with public/ the same way an alias would.
+  it('never lets an app slug shadow something served out of public/', () => {
+    const redirecting = entries
+      .filter((e) => e.data.hidden !== true && !editorial.includes(e.slug))
+      .map((e) => e.slug);
+    expect(collisions(redirecting, new Set(servedFromPublic()))).toEqual([]);
+  });
+
+  const duplicates = (names: string[]) => names.filter((n, i) => names.indexOf(n) !== i);
+
+  it('catches a duplicate when there is one to catch', () => {
+    expect(duplicates(['a', 'b', 'a'])).toEqual(['a']);
   });
 
   it('never claims the same alias for two apps', () => {
     const names = aliases.map((a) => a.alias);
-    expect(new Set(names).size, `duplicate alias among ${names.join(', ')}`).toBe(names.length);
+    expect(duplicates(names), `duplicate alias among ${names.join(', ')}`).toEqual([]);
   });
 
   it('never points at a hidden app, which has no page to reach', () => {
-    for (const { alias, slug } of aliases) {
-      const hidden = entries.find((e) => e.slug === slug)?.data.hidden === true;
-      expect(hidden, `alias ${alias} redirects to hidden ${slug}`).toBe(false);
-    }
-  });
-
-  // public/ is copied into the site verbatim, so a top-level directory there is
-  // a URL just as much as an app slug is. An alias colliding with one would put
-  // a redirect stub and a real page at the same path.
-  it('never shadows something served out of public/', () => {
-    const served = new Set(
-      readdirSync(resolve(root, 'public'), { withFileTypes: true })
-        .filter((e) => e.isDirectory())
-        .map((e) => e.name),
-    );
-    for (const { alias } of aliases) {
-      expect(served.has(alias), `alias ${alias} shadows public/${alias}`).toBe(false);
-    }
+    const hidden = new Set(entries.filter((e) => e.data.hidden === true).map((e) => e.slug));
+    const dangling = aliases.filter((a) => hidden.has(a.slug)).map((a) => a.alias);
+    expect(dangling, 'alias redirects to a hidden app').toEqual([]);
   });
 });

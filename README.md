@@ -86,6 +86,26 @@ trigger workflow runs from pushes made with the default `GITHUB_TOKEN`, so
 that run succeeded) so the freshly committed release data actually reaches
 the deployed site the same night.
 
+## Catalog data
+
+`public/addon-checker/data/catalog.json` is the GW2 addon catalog the checker
+at `/addon-checker/` reads in the browser. It is built by the scraper in
+`scripts/catalog/`: `discover.mjs` searches GitHub for candidate repos,
+`enrich.mjs` and `signals.mjs` gather the observable metadata, `score.mjs`
+turns that into a risk band, and `build-catalog.mjs` (`npm run catalog`) writes
+the result. `conduct.json`, `overrides.json` and `policies.json` beside it are
+hand-authored and the scraper never rewrites them. `tests/catalog/` covers all
+of it and runs as part of `npm test`.
+
+`refresh-catalog.yml` re-runs the scrape weekly and commits the catalog when it
+moved. As with release data, that `GITHUB_TOKEN` commit cannot fire `pages.yml`
+on its own, so `pages.yml` listens for a completed `refresh-catalog` run too.
+
+`pages.yml` then stamps the deployed commit onto the checker's own asset URLs
+(`app.js?v=<sha>` and friends) as it builds. The catalog and the modules that
+read it change together, and GitHub Pages caches hard; without the stamp a
+browser can pair a fresh catalog with a stale module.
+
 ## Commands
 
 ```bash

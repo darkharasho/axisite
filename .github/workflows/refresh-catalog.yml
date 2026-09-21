@@ -57,6 +57,8 @@ jobs:
       # that). If npm test ran first, that failure would block the refresh
       # every single week until a human fixed conduct.json, freezing it
       # indefinitely. Building and committing first means an orphaned verdict
-      # still turns this run red, but can no longer stop the catalog
-      # refreshing.
+      # still turns this run red without stopping the catalog being refreshed
+      # and committed. The red run does hold back the deploy - pages.yml's
+      # workflow_run trigger only fires on success - so the committed catalog
+      # reaches the live site on the next nightly refresh-releases deploy.
       - run: npm test

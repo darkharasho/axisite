@@ -1,5 +1,5 @@
 const API = 'https://api.github.com'
-const UA = 'gw2-addon-risk-guide'
+const UA = 'axisite-addon-catalog'
 
 const headers = (token) => ({
   accept: 'application/vnd.github+json',

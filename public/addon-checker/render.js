@@ -90,7 +90,7 @@ export function breakdown(repo, policies) {
   return `${ov}<h3>Why this score</h3>${none}${risks.map((s) => signalRow(s, policies)).join('')}${mit}`
 }
 
-const ISSUE_BASE = 'https://github.com/darkharasho/gw2-addon-risk-guide/issues/new'
+const ISSUE_BASE = 'https://github.com/darkharasho/axisite/issues/new'
 
 // A second, differently-sourced claim, so it is drawn as annotation rather
 // than as score: outlined, never filled like a band chip, and absent unless

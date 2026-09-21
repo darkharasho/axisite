@@ -240,6 +240,12 @@ describe('the addon checker', () => {
   // explicit-index form a bookmark carries has to keep resolving - and now it
   // resolves to the page itself rather than to a stub.
   it('answers the URL a bookmark carries', () => {
-    expect(read('addon-checker/index.html')).toContain('GW2');
+    const page = read('addon-checker/index.html');
+    // A redirect stub is a <meta refresh> and nothing else, so asserting on the
+    // page's own stylesheet and catalog mount tells the two apart on purpose
+    // rather than by an accident of casing.
+    expect(page).toContain('href="style.css"');
+    expect(page).toContain('app.js');
+    expect(page).not.toContain('http-equiv="refresh"');
   });
 });
