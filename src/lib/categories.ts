@@ -40,3 +40,12 @@ export const STATUS_LABEL: Record<Status, string> = {
   beta: 'Beta',
   wip: 'In progress',
 };
+
+/** Platform slugs are stored lowercase in frontmatter. Cards uppercase them in
+ *  CSS; anywhere they appear as running text they need capitalising properly,
+ *  with the two that are not ordinary words spelled the way they are written. */
+const PLATFORM_LABEL: Record<string, string> = { macos: 'macOS', ios: 'iOS' };
+
+export function platformLabel(platform: string): string {
+  return PLATFORM_LABEL[platform] ?? platform.charAt(0).toUpperCase() + platform.slice(1);
+}

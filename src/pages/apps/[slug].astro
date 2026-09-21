@@ -1,45 +1,94 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { chipClass, STATUS_LABEL } from '../../lib/categories';
-import { loadReleases, releaseChip } from '../../lib/releases';
+import AppCard from '../../components/AppCard.astro';
+import { CATEGORY_META, chipClass, platformLabel, STATUS_LABEL } from '../../lib/categories';
+import { loadReleases } from '../../lib/releases';
 
 export async function getStaticPaths() {
   const apps = await getCollection('apps');
-  return apps
-    .filter((entry) => !entry.data.hidden)
-    .map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  const visible = apps.filter((entry) => !entry.data.hidden);
+  return visible.map((entry) => ({
+    params: { slug: entry.id },
+    props: {
+      entry,
+      // Siblings are resolved here rather than in the template so each page
+      // gets its own list without re-reading the collection per render.
+      siblings: visible
+        .filter((other) => other.id !== entry.id && other.data.category === entry.data.category)
+        .sort((a, b) => a.data.name.localeCompare(b.data.name))
+        .slice(0, 3),
+    },
+  }));
 }
 
-const { entry } = Astro.props;
+const { entry, siblings } = Astro.props;
 const app = entry.data;
 const { Content } = await render(entry);
-const chip = app.repo ? releaseChip(loadReleases()[app.repo]) : undefined;
+
+const release = app.repo ? loadReleases()[app.repo] : undefined;
 const repoUrl = app.repo ? `https://github.com/${app.repo}` : undefined;
+const category = CATEGORY_META[app.category];
+const glyph = app.name.replace(/[^A-Za-z]/g, '').slice(0, 2).toUpperCase();
+const released = release?.publishedAt
+  ? new Date(release.publishedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+  : undefined;
 ---
 <Base title={`${app.name} — axi`} description={app.tagline}>
-  <p class="axi-eyebrow"><a href="/">&larr; The suite</a></p>
+  <p class="axi-eyebrow site-crumb">
+    <a href="/">The suite</a> / {category.label}
+  </p>
 
-  <div class="axi-row" style="--axi-row-gap: 14px; align-items: center">
+  <div class="site-apphead">
     {app.icon
-      ? <img src={`/icons/${app.icon}`} alt="" width="56" height="56" />
-      : <span class="axi-sigil" aria-hidden="true">{app.name.slice(0, 1).toUpperCase()}</span>}
-    <h1 style="margin: 0">{app.name}</h1>
+      ? <img class="site-apphead__glyph" src={`/icons/${app.icon}`} alt="" width="64" height="64" />
+      : <span class="site-apphead__glyph" aria-hidden="true">{glyph}</span>}
+    <div>
+      <h1>{app.name}</h1>
+      <p class="site-apphead__tag">{app.tagline}</p>
+    </div>
   </div>
 
-  <p>{app.tagline}</p>
+  <div class="site-app">
+    <div class="axi-prose"><Content /></div>
 
-  <div class="axi-row" style="--axi-row-gap: 6px">
-    <span class={chipClass(app.status)}>{STATUS_LABEL[app.status]}</span>
-    {chip && <span class="axi-chip axi-chip--meta">{chip}</span>}
-    {(app.platforms ?? []).map((p) => <span class="axi-chip">{p}</span>)}
+    <aside class="site-app__side">
+      <div class="site-app__acts">
+        {app.site && <a class="axi-btn axi-btn--primary" href={app.site}>Open {app.name}</a>}
+        {repoUrl && <a class="axi-btn" href={repoUrl}>Source on GitHub</a>}
+        {(app.links ?? []).map((l) => <a class="axi-btn axi-btn--ghost" href={l.url}>{l.label}</a>)}
+      </div>
+
+      <div class="axi-panel site-facts">
+        <dl>
+          <div>
+            <dt>Status</dt>
+            <dd><span class={chipClass(app.status)}>{STATUS_LABEL[app.status]}</span></dd>
+          </div>
+          {release?.tag && (
+            <div>
+              <dt>Version</dt>
+              <dd><span class="axi-chip axi-chip--meta">{release.tag}</span></dd>
+            </div>
+          )}
+          {released && (
+            <div><dt>Released</dt><dd>{released}</dd></div>
+          )}
+          {(app.platforms ?? []).length > 0 && (
+            <div><dt>Platforms</dt><dd>{(app.platforms ?? []).map(platformLabel).join(' · ')}</dd></div>
+          )}
+          <div><dt>Category</dt><dd>{category.label}</dd></div>
+        </dl>
+      </div>
+    </aside>
   </div>
 
-  <div class="axi-prose"><Content /></div>
-
-  <div class="axi-row" style="--axi-row-gap: 10px">
-    {app.site && <a class="axi-btn axi-btn--primary" href={app.site}>Open {app.name}</a>}
-    {repoUrl && <a class="axi-btn" href={repoUrl}>Source on GitHub</a>}
-    {(app.links ?? []).map((l) => <a class="axi-btn axi-btn--ghost" href={l.url}>{l.label}</a>)}
-  </div>
+  {siblings.length > 0 && (
+    <section class="site-related">
+      <h2>More in {category.label}</h2>
+      <div class="axi-grid" style="--axi-grid-min: 300px">
+        {siblings.map((sibling) => <AppCard entry={sibling} />)}
+      </div>
+    </section>
+  )}
 </Base>

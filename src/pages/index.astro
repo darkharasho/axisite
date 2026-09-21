@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import AppCard from '../components/AppCard.astro';
 import { CATEGORIES, CATEGORY_META } from '../lib/categories';
+import { loadReleases, recentReleases } from '../lib/releases';
 
 const apps = await getCollection('apps');
 const featured = apps.filter((a) => a.data.featured);
@@ -16,16 +17,53 @@ const byCategory = CATEGORIES
   }))
   .filter((g) => g.items.length > 0)
   .sort((a, b) => a.meta.order - b.meta.order);
+
+// The feed announces releases, so it needs to name the app rather than the
+// repo. An entry whose repo isn't in the collection still shows, under its
+// repo name — better a row we can't prettify than a silently dropped release.
+const byRepo = new Map(apps.filter((a) => a.data.repo).map((a) => [a.data.repo!, a]));
+const feed = recentReleases(loadReleases(), 4).map((release) => {
+  const app = byRepo.get(release.repo);
+  return {
+    ...release,
+    name: app?.data.name ?? release.repo.split('/')[1],
+    href: app && !app.data.hidden ? `/apps/${app.id}` : undefined,
+  };
+});
 ---
 <Base title="axi — the suite">
-  <div class="axi-stack site-hero">
-    <p class="axi-eyebrow">The axi suite</p>
-    <h1>Every axi app, in one place.</h1>
-    <p>
-      Tools for Guild Wars 2 — combat logs, WvW overlays, guild rosters, builds and
-      streaming. <a href="/apps/axiom">AxiOM</a> installs and launches the ones you want;
-      this page is the map of what exists.
-    </p>
+  <div class="site-top">
+    <div class="axi-panel site-banner">
+      <div class="site-banner__marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <h1>{apps.length} tools for Guild Wars 2.</h1>
+      <p>
+        Log parsers, in-game overlays, guild rosters, build editors, Discord bots and
+        stream kit — all built on arcdps, all listed here whether you've installed
+        them or not.
+      </p>
+    </div>
+
+    <div class="axi-panel site-feed">
+      <div class="site-feed__head">
+        <span class="axi-diamond axi-diamond--ok" aria-hidden="true"></span>
+        Fresh releases
+      </div>
+      {feed.length > 0
+        ? (
+          <ol>
+            {feed.map((release) => (
+              <li>
+                {release.href
+                  ? <a class="site-feed__name" href={release.href}>{release.name}</a>
+                  : <span class="site-feed__name">{release.name}</span>}
+                <span class="axi-chip axi-chip--meta">{release.tag}</span>
+                <span class="site-feed__when">{release.when}</span>
+              </li>
+            ))}
+          </ol>
+        )
+        : <p class="site-feed__empty">No releases recorded yet.</p>}
+    </div>
   </div>
 
   <div class="site-filters" data-filter-mount></div>
@@ -33,9 +71,12 @@ const byCategory = CATEGORIES
   {featured.length > 0 && (
     <section class="site-section" data-section="featured">
       <div class="site-section__head">
+        <i class="site-section__mark" aria-hidden="true"></i>
         <h2>Start here</h2>
+        <span class="axi-chip axi-chip--meta">{featured.length}</span>
+        <p class="site-section__blurb">The ones most people end up keeping.</p>
       </div>
-      <div class="axi-grid" style="--axi-grid-min: 300px">
+      <div class="axi-grid" style="--axi-grid-min: 320px">
         {featured.map((entry) => <AppCard entry={entry} />)}
       </div>
     </section>
@@ -44,10 +85,12 @@ const byCategory = CATEGORIES
   {byCategory.map((group) => (
     <section class="site-section" data-section={group.category}>
       <div class="site-section__head">
+        <i class="site-section__mark" aria-hidden="true"></i>
         <h2>{group.meta.label}</h2>
-        <p class="axi-card__kind">{group.meta.blurb}</p>
+        <span class="axi-chip axi-chip--meta">{group.items.length}</span>
+        <p class="site-section__blurb">{group.meta.blurb}</p>
       </div>
-      <div class="axi-grid" style="--axi-grid-min: 300px">
+      <div class="axi-grid" style="--axi-grid-min: 320px">
         {group.items.map((entry) => <AppCard entry={entry} />)}
       </div>
     </section>

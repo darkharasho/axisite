@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { collectReleases, mergeReleases } from '../scripts/build-releases.mjs';
-import { releaseChip } from '../src/lib/releases';
+import { recentReleases, releaseChip } from '../src/lib/releases';
 
 const ok = (body: unknown) => ({ ok: true, status: 200, json: async () => body });
 const fail = () => ({ ok: false, status: 403, json: async () => ({}) });
@@ -81,5 +81,43 @@ describe('releaseChip', () => {
 
   it('returns undefined when there is no release', () => {
     expect(releaseChip(undefined, now)).toBeUndefined();
+  });
+});
+
+describe('recentReleases', () => {
+  const now = new Date('2026-09-20T00:00:00Z');
+  const map = {
+    'darkharasho/old': { tag: 'v1', publishedAt: '2026-01-01T00:00:00Z', downloads: 0 },
+    'darkharasho/newest': { tag: 'v3', publishedAt: '2026-09-19T00:00:00Z', downloads: 0 },
+    'darkharasho/middle': { tag: 'v2', publishedAt: '2026-09-01T00:00:00Z', downloads: 0 },
+  };
+
+  it('orders by publish date, newest first', () => {
+    expect(recentReleases(map, 3, now).map((r) => r.repo)).toEqual([
+      'darkharasho/newest',
+      'darkharasho/middle',
+      'darkharasho/old',
+    ]);
+  });
+
+  it('honours the limit', () => {
+    expect(recentReleases(map, 2, now)).toHaveLength(2);
+  });
+
+  it('carries the tag and a human recency for each entry', () => {
+    expect(recentReleases(map, 1, now)[0]).toMatchObject({
+      repo: 'darkharasho/newest',
+      tag: 'v3',
+      when: 'yesterday',
+    });
+  });
+
+  it('skips entries with no tag rather than rendering a blank row', () => {
+    const withBlank = { ...map, 'darkharasho/blank': { tag: '', publishedAt: '2026-09-20T00:00:00Z', downloads: 0 } };
+    expect(recentReleases(withBlank, 4, now).map((r) => r.repo)).not.toContain('darkharasho/blank');
+  });
+
+  it('returns nothing when the release file is empty', () => {
+    expect(recentReleases({}, 4, now)).toEqual([]);
   });
 });

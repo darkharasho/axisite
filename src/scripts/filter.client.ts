@@ -9,14 +9,14 @@ if (mount) {
 
   mount.innerHTML = `
     <div class="axi-toolbar">
-      <div class="axi-search" style="flex: 1 1 220px; max-width: 320px">
+      <div class="axi-search" style="flex: 1 1 240px; min-width: 200px">
         <span class="axi-search__icon" aria-hidden="true">&#8981;</span>
         <label class="axi-sr-only" for="app-search">Search apps</label>
-        <input class="axi-input" id="app-search" type="search" placeholder="Search the suite…" />
+        <input class="axi-input" id="app-search" type="search" placeholder="Search the suite&hellip;" />
       </div>
+      <div class="axi-row" style="--axi-row-gap: 6px" data-pills role="group" aria-label="Filter by category"></div>
+      <p class="axi-card__kind" style="margin: 0 0 0 auto" data-filter-status aria-live="polite"></p>
     </div>
-    <div class="axi-row" style="--axi-row-gap: 6px; margin-top: 10px" data-pills role="group" aria-label="Filter by category"></div>
-    <p class="site-filter-status axi-sr-only" data-filter-status aria-live="polite"></p>
     <p class="axi-notice site-filter-empty" data-filter-empty hidden>Nothing matches that.</p>`;
 
   const input = mount.querySelector<HTMLInputElement>('#app-search')!;
@@ -54,8 +54,8 @@ if (mount) {
     empty.hidden = visibleCount !== 0;
     status.textContent =
       visibleCount === 0
-        ? 'Nothing matches that.'
-        : `${visibleCount} app${visibleCount === 1 ? '' : 's'} shown.`;
+        ? 'Nothing matches that'
+        : `${visibleCount} of ${cards.length} shown`;
   }
 
   input.addEventListener('input', apply);
@@ -68,4 +68,6 @@ if (mount) {
     }
     apply();
   });
+
+  apply();
 }

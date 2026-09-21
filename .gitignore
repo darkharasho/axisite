@@ -8,3 +8,4 @@ build
 .superpowers
 .sai/
 .astro/
+.playwright-mcp/

@@ -15,6 +15,24 @@ function ago(published: string, now: Date): string {
   return `${Math.round(days / 30)}mo ago`;
 }
 
+export type RecentRelease = { repo: string; tag: string; publishedAt: string; when: string };
+
+/** The newest releases across the whole suite, for the landing page's feed.
+ *  Sorted by publish date rather than by app, so the panel reads as a
+ *  changelog. A repo with no tag yet has nothing to announce and is skipped. */
+export function recentReleases(map: ReleaseMap, limit = 4, now = new Date()): RecentRelease[] {
+  return Object.entries(map)
+    .filter(([, info]) => Boolean(info?.tag))
+    .sort((a, b) => Date.parse(b[1].publishedAt) - Date.parse(a[1].publishedAt))
+    .slice(0, limit)
+    .map(([repo, info]) => ({
+      repo,
+      tag: info.tag,
+      publishedAt: info.publishedAt,
+      when: ago(info.publishedAt, now),
+    }));
+}
+
 export function releaseChip(info: ReleaseInfo | undefined, now = new Date()): string | undefined {
   if (!info?.tag) return undefined;
   return `${info.tag} · ${ago(info.publishedAt, now)}`;
