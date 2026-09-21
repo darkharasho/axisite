@@ -102,3 +102,10 @@ four `A` records on the apex pointing at `185.199.108.153`,
 `185.199.109.153`, `185.199.110.153` and `185.199.111.153`, plus a `www`
 `CNAME` to `darkharasho.github.io`. All of them are DNS-only — proxying
 them through Cloudflare would break the Pages TLS certificate.
+
+The old domain, `axi.wiki`, no longer reaches Pages (a Pages site serves
+exactly one custom domain), so its zone redirects instead: its records
+*are* proxied, and a single redirect rule sends `axi.wiki` and
+`www.axi.wiki` to the same path on `axi.space` with a 301, query string
+intact. Proxying is what makes that work — the rule runs at Cloudflare's
+edge, so no origin is ever contacted.
