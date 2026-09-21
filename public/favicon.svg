@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="axi">
+  <!-- The masthead sigil at favicon scale: an accent diamond, outlined in ink,
+       with the suite's A. An icon file cannot read the axi-design custom
+       properties, so the accent and the ink line are written out here; they
+       are the only two colours the mark uses. favicon.ico is rasterised from
+       this file at 16/32/48 with rsvg-convert. -->
+  <rect x="5.4" y="5.4" width="21.2" height="21.2" rx="3.1"
+        transform="rotate(45 16 16)"
+        fill="#b06bff" stroke="#0c0e12" stroke-width="2" />
+  <path d="M11.2 22 16 9.8 20.8 22" fill="none" stroke="#0c0e12" stroke-width="2.8" />
+  <path d="M13.2 18.2H18.8" stroke="#0c0e12" stroke-width="2.4" />
+</svg>

@@ -25,6 +25,15 @@ describe('build output', () => {
     }
   });
 
+  it('serves a favicon so no page load 404s for one', () => {
+    for (const icon of ['favicon.svg', 'favicon.ico']) {
+      expect(existsSync(dist(icon))).toBe(true);
+    }
+    for (const page of ['index.html', '404.html']) {
+      expect(read(page)).toContain('rel="icon"');
+    }
+  });
+
   it('does not vendor a copy of axi.css', () => {
     expect(existsSync(resolve(root, 'public/axi.css'))).toBe(false);
     expect(existsSync(resolve(root, 'src/styles/axi.css'))).toBe(false);
