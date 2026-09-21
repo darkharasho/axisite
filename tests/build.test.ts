@@ -145,3 +145,39 @@ describe('progressive enhancement', () => {
     }
   });
 });
+
+const hiddenSource = (slug: string) =>
+  readFileSync(resolve(root, 'src/content/apps', `${slug}.md`), 'utf8');
+const visibleAppSlugs = appSlugs.filter(
+  (slug) => !/^hidden:\s*true\s*$/m.test(hiddenSource(slug)),
+);
+const hiddenAppSlugs = appSlugs.filter((slug) => !visibleAppSlugs.includes(slug));
+
+// The site only ever links the full /apps/<slug> form, so these URLs stayed
+// broken for as long as nobody typed one by hand. Both are the shapes a
+// person reaches for from memory, and both used to land on the 404 page.
+describe('URLs people type rather than click', () => {
+  it('serves the /apps directory URL instead of 404ing', () => {
+    expect(existsSync(dist('apps/index.html'))).toBe(true);
+    expect(read('apps/index.html')).toContain('url=/');
+  });
+
+  it('redirects a bare app slug to its detail page', () => {
+    expect(visibleAppSlugs.length).toBeGreaterThan(0);
+    for (const slug of visibleAppSlugs) {
+      expect(existsSync(dist(`${slug}/index.html`)), `no /${slug} redirect`).toBe(true);
+      expect(read(`${slug}/index.html`)).toContain(`/apps/${slug}`);
+    }
+  });
+
+  it('never redirects to an app page that was not emitted', () => {
+    for (const slug of hiddenAppSlugs) {
+      expect(existsSync(dist(`${slug}/index.html`)), `/${slug} redirects to a 404`).toBe(false);
+    }
+  });
+
+  it('leaves the editorial pages themselves, not redirects to them', () => {
+    expect(read('about/index.html')).toContain('axi-prose');
+    expect(read('getting-started/index.html')).toContain('axi-prose');
+  });
+});
