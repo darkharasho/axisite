@@ -17,82 +17,16 @@
       "min": 70
     }
   ],
-  "generated_at": "2026-10-12T12:02:48.573Z",
+  "generated_at": "2026-10-19T09:56:36.980Z",
   "scorer_fingerprint": "829933f8e4bc64d4",
   "stats": {
-    "discovered": 684,
-    "reused": 546,
-    "enriched": 138,
+    "discovered": 682,
+    "reused": 535,
+    "enriched": 147,
     "deferred": 0,
     "failures": 0
   },
   "repos": [
-    {
-      "full_name": "x4c1/arcdps_esp",
-      "name": "arcdps_esp",
-      "owner": "x4c1",
-      "html_url": "https://github.com/x4c1/arcdps_esp",
-      "description": "ArcDPS addon mini-map",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-09-25T16:26:40Z",
-      "license": "MIT",
-      "points": 80,
-      "band": "high",
-      "signals": [
-        {
-          "id": "cheat",
-          "label": "Cheating or exploit tooling",
-          "weight": 45,
-          "policy": "ua-modify-client",
-          "explain": "Presents itself as a cheat, trainer, or exploit — the category ArenaNet bans outright.",
-          "evidence": [
-            "repository name contains \"esp\""
-          ]
-        },
-        {
-          "id": "injection",
-          "label": "Client injection or hooking",
-          "weight": 25,
-          "policy": "ua-third-party-programs",
-          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
-          "evidence": [
-            "ships arcdps_esp.dll"
-          ]
-        },
-        {
-          "id": "unsigned_binaries",
-          "label": "Ships prebuilt binaries",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
-          "evidence": [
-            "release asset arcdps_esp.dll"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": {
-        "conduct": "assistive",
-        "advantage": "some",
-        "rationale": "A client-side minimap built on arcdps draws positional information into the client. The description is too thin to support a stronger claim than that, so the grade stops at some - the repository name suggests more, but a name is not evidence.",
-        "evidence": "ArcDPS addon mini-map",
-        "policy": "ua-third-party-programs",
-        "assessed_at": "2026-09-20"
-      }
-    },
     {
       "full_name": "darkharasho/gw2-addon-risk-guide",
       "name": "gw2-addon-risk-guide",
@@ -156,6 +90,77 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Emisan01/gw2chatlator",
+      "name": "gw2chatlator",
+      "owner": "Emisan01",
+      "html_url": "https://github.com/Emisan01/gw2chatlator",
+      "description": "GW2 chat enhancer for automatic translation, input correction, learning and more – smooths misunderstandings into \"ah, I get you\" 😃",
+      "topics": [
+        "accessibility",
+        "autocorrect",
+        "chat",
+        "guild-wars-2",
+        "gw2",
+        "imgui",
+        "nexus-addon",
+        "raidcore",
+        "speech-to-text",
+        "translation",
+        "whisper"
+      ],
+      "language": "C++",
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-19T09:31:56Z",
+      "license": "MIT",
+      "points": 75,
+      "band": "high",
+      "signals": [
+        {
+          "id": "automation",
+          "label": "Gameplay automation",
+          "weight": 40,
+          "policy": "ua-automation",
+          "explain": "Plays the game for you — bots, autofarming, or simulated input.",
+          "evidence": [
+            "matched \"macro\""
+          ]
+        },
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "ships gw2keyboard_nexus.dll"
+          ]
+        },
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset gw2keyboard_nexus.dll"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
           ]
         }
       ],
@@ -233,82 +238,6 @@
         "conduct": "none",
         "advantage": "none",
         "rationale": "Startup diagnostics and shader cache cleanup act on the installation, not on play. The injection and memory signals are about how it works, not what it is for.",
-        "policy": "support-benign-tolerance",
-        "assessed_at": "2026-09-20"
-      }
-    },
-    {
-      "full_name": "fodaveg/tyrian-companion-nexus",
-      "name": "tyrian-companion-nexus",
-      "owner": "fodaveg",
-      "html_url": "https://github.com/fodaveg/tyrian-companion-nexus",
-      "description": "Nexus addon that paints Tyrian Companion's Guild Wars 2 loot and price alerts inside the game",
-      "topics": [],
-      "language": "Rust",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-11T13:17:31Z",
-      "license": null,
-      "points": 75,
-      "band": "high",
-      "signals": [
-        {
-          "id": "memory",
-          "label": "Game memory access",
-          "weight": 35,
-          "policy": "ua-modify-client",
-          "explain": "Reads or writes the game client’s memory.",
-          "evidence": [
-            "matched \"ReadProcessMemory\""
-          ]
-        },
-        {
-          "id": "injection",
-          "label": "Client injection or hooking",
-          "weight": 25,
-          "policy": "ua-third-party-programs",
-          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
-          "evidence": [
-            "ships tyrian_companion_nexus.dll"
-          ]
-        },
-        {
-          "id": "unsigned_binaries",
-          "label": "Ships prebuilt binaries",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
-          "evidence": [
-            "release asset tyrian_companion_nexus.dll"
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": {
-        "conduct": "assistive",
-        "advantage": "none",
-        "rationale": "Surfaces loot and trading post prices the player would otherwise look up manually. An alert is a notification, not an input: the player still opens the trading post and clicks every buy themselves. The prices are public through the official API, so no advantage attaches either.",
-        "evidence": "loot and price alerts inside the game",
         "policy": "support-benign-tolerance",
         "assessed_at": "2026-09-20"
       }
@@ -450,7 +379,7 @@
         "taco"
       ],
       "language": "C++",
-      "stars": 31,
+      "stars": 30,
       "archived": false,
       "pushed_at": "2026-07-13T20:00:30Z",
       "license": "GPL-3.0",
@@ -501,7 +430,7 @@
         "gw2"
       ],
       "language": "AutoHotkey",
-      "stars": 11,
+      "stars": 13,
       "archived": false,
       "pushed_at": "2025-12-22T09:08:49Z",
       "license": "MIT",
@@ -754,7 +683,7 @@
         "windows"
       ],
       "language": "C",
-      "stars": 14,
+      "stars": 15,
       "archived": false,
       "pushed_at": "2026-04-21T21:46:53Z",
       "license": "MIT",
@@ -1260,6 +1189,55 @@
       "assessment": null
     },
     {
+      "full_name": "ILC-IT/gw2Angular",
+      "name": "gw2Angular",
+      "owner": "ILC-IT",
+      "html_url": "https://github.com/ILC-IT/gw2Angular",
+      "description": "",
+      "topics": [],
+      "language": "TypeScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-16T13:04:26Z",
+      "license": null,
+      "points": 55,
+      "band": "elevated",
+      "signals": [
+        {
+          "id": "cheat",
+          "label": "Cheating or exploit tooling",
+          "weight": 45,
+          "policy": "ua-modify-client",
+          "explain": "Presents itself as a cheat, trainer, or exploit — the category ArenaNet bans outright.",
+          "evidence": [
+            "matched \"ESP\""
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "JellyfishCraft86/Guild-Wars-2-Trainer",
       "name": "Guild-Wars-2-Trainer",
       "owner": "JellyfishCraft86",
@@ -1489,7 +1467,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 43 months ago"
+            "last push 44 months ago"
           ]
         },
         {
@@ -1572,7 +1550,7 @@
       "language": "C++",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-10-12T09:24:22Z",
+      "pushed_at": "2026-10-13T06:33:27Z",
       "license": "MIT",
       "points": 50,
       "band": "elevated",
@@ -1827,23 +1805,33 @@
       "name": "EchoesUnseen",
       "owner": "Quinn80",
       "html_url": "https://github.com/Quinn80/EchoesUnseen",
-      "description": "Accessibility overlay for Guild Wars 2 - screen reader, voice assistant, radial HUD, chat reader, trading post and build tools. Built for blind and low-vision players.",
+      "description": "A free Guild Wars 2 companion designed especially for low-vision players. Explore spoken reading, clearer trails, voice-to-chat, a music guide and helpful account tools—all at your own pace.",
       "topics": [
         "accessibility",
         "assistive-technology",
-        "blind",
+        "csharp",
         "dotnet",
+        "game-accessibility",
+        "game-overlay",
         "guild-wars-2",
         "gw2",
+        "keyboard-navigation",
         "low-vision",
+        "ocr",
+        "piper-tts",
         "screen-reader",
-        "voice-control",
+        "speech-recognition",
+        "text-to-speech",
+        "trail-navigation",
+        "voice-to-chat",
+        "whisper",
+        "windows",
         "wpf"
       ],
       "language": "C#",
-      "stars": 0,
+      "stars": 1,
       "archived": false,
-      "pushed_at": "2026-09-27T17:20:07Z",
+      "pushed_at": "2026-10-18T21:32:12Z",
       "license": "MIT",
       "points": 50,
       "band": "elevated",
@@ -1855,7 +1843,7 @@
           "policy": "ua-automation",
           "explain": "Plays the game for you — bots, autofarming, or simulated input.",
           "evidence": [
-            "matched \"AutoHotkey\""
+            "matched \"Autoplay\""
           ]
         },
         {
@@ -1865,7 +1853,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset echoesunseen-1.6b.exe"
+            "release asset echoes.unseen.exe"
           ]
         },
         {
@@ -1875,7 +1863,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "0 stars"
+            "1 stars"
           ]
         }
       ],
@@ -1939,7 +1927,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 12 months ago"
+            "last push 13 months ago"
           ]
         },
         {
@@ -2072,7 +2060,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 45 months ago"
+            "last push 46 months ago"
           ]
         },
         {
@@ -2083,6 +2071,45 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "bbgrk/zoom-me-out",
+      "name": "zoom-me-out",
+      "owner": "bbgrk",
+      "html_url": "https://github.com/bbgrk/zoom-me-out",
+      "description": "A Guild Wars 2 Nexus addon, which presses Camera Zoom Out at a fixed interval, with afk check.",
+      "topics": [],
+      "language": "Rust",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-15T12:38:40Z",
+      "license": "Unlicense",
+      "points": 45,
+      "band": "elevated",
+      "signals": [
+        {
+          "id": "automation",
+          "label": "Gameplay automation",
+          "weight": 40,
+          "policy": "ua-automation",
+          "explain": "Plays the game for you — bots, autofarming, or simulated input.",
+          "evidence": [
+            "matched \"Macro\""
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -2287,6 +2314,45 @@
       "assessment": null
     },
     {
+      "full_name": "MiloSelfEsteem/RandomProjects",
+      "name": "RandomProjects",
+      "owner": "MiloSelfEsteem",
+      "html_url": "https://github.com/MiloSelfEsteem/RandomProjects",
+      "description": "A collection of my personal programming projects: an MQL5 trading bot, a C# autoclicker, a Python CS2 lineup tool and an AutoHotkey team tool for Guild Wars 2. Use the code however you wish, please credit if you have for public use though.",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T14:17:37Z",
+      "license": "MIT",
+      "points": 45,
+      "band": "elevated",
+      "signals": [
+        {
+          "id": "automation",
+          "label": "Gameplay automation",
+          "weight": 40,
+          "policy": "ua-automation",
+          "explain": "Plays the game for you — bots, autofarming, or simulated input.",
+          "evidence": [
+            "matched \"AutoHotkey\""
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "nuko2MB/gw2_lfg_filter",
       "name": "gw2_lfg_filter",
       "owner": "nuko2MB",
@@ -2387,7 +2453,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 56 months ago"
+            "last push 57 months ago"
           ]
         },
         {
@@ -2838,9 +2904,9 @@
         "parser"
       ],
       "language": "C#",
-      "stars": 159,
+      "stars": 160,
       "archived": false,
-      "pushed_at": "2026-10-11T18:29:06Z",
+      "pushed_at": "2026-10-18T22:34:41Z",
       "license": "MIT",
       "points": 40,
       "band": "moderate",
@@ -2853,6 +2919,65 @@
           "explain": "Plays the game for you — bots, autofarming, or simulated input.",
           "evidence": [
             "matched \"macro\""
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "cbart-cmd/gw2addonsreleases",
+      "name": "gw2addonsreleases",
+      "owner": "cbart-cmd",
+      "html_url": "https://github.com/cbart-cmd/gw2addonsreleases",
+      "description": "Public binary distribution for Guild Wars 2 Nexus addons",
+      "topics": [],
+      "language": null,
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T21:52:04Z",
+      "license": null,
+      "points": 40,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "ships fight_analysis_danger.dll"
+          ]
+        },
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset timers.dll"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -3102,65 +3227,6 @@
       "assessment": null
     },
     {
-      "full_name": "DayuGuo/lang5-nexus-cn",
-      "name": "lang5-nexus-cn",
-      "owner": "DayuGuo",
-      "html_url": "https://github.com/DayuGuo/lang5-nexus-cn",
-      "description": "Guild Wars 2 Chinese switch plugin. 激战2 国际服中文切换插件，兼容macOS和linux。本页面为发布页。",
-      "topics": [],
-      "language": null,
-      "stars": 8,
-      "archived": false,
-      "pushed_at": "2026-09-30T10:11:39Z",
-      "license": null,
-      "points": 40,
-      "band": "moderate",
-      "signals": [
-        {
-          "id": "injection",
-          "label": "Client injection or hooking",
-          "weight": 25,
-          "policy": "ua-third-party-programs",
-          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
-          "evidence": [
-            "ships lang5nexuscn.dll"
-          ]
-        },
-        {
-          "id": "unsigned_binaries",
-          "label": "Ships prebuilt binaries",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
-          "evidence": [
-            "release asset lang5nexuscn.dll"
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "8 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "diov/scruffy-fontkit",
       "name": "scruffy-fontkit",
       "owner": "diov",
@@ -3403,6 +3469,72 @@
       "assessment": null
     },
     {
+      "full_name": "fodaveg/tyrian-companion-nexus",
+      "name": "tyrian-companion-nexus",
+      "owner": "fodaveg",
+      "html_url": "https://github.com/fodaveg/tyrian-companion-nexus",
+      "description": "Nexus addon that paints Tyrian Companion's Guild Wars 2 loot and price alerts inside the game",
+      "topics": [],
+      "language": "Rust",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-16T10:24:00Z",
+      "license": null,
+      "points": 40,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "ships tyrian_companion_nexus.dll"
+          ]
+        },
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset tyrian_companion_nexus.dll"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": {
+        "conduct": "assistive",
+        "advantage": "none",
+        "rationale": "Surfaces loot and trading post prices the player would otherwise look up manually. An alert is a notification, not an input: the player still opens the trading post and clicks every buy themselves. The prices are public through the official API, so no advantage attaches either.",
+        "evidence": "loot and price alerts inside the game",
+        "policy": "support-benign-tolerance",
+        "assessed_at": "2026-09-20"
+      }
+    },
+    {
       "full_name": "FrostyInk/Boonvision-Release",
       "name": "Boonvision-Release",
       "owner": "FrostyInk",
@@ -3537,7 +3669,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-29T16:22:47Z",
+      "pushed_at": "2026-10-16T18:12:08Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -3596,7 +3728,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-29T13:19:57Z",
+      "pushed_at": "2026-10-16T21:55:08Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -3655,7 +3787,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-27T14:03:13Z",
+      "pushed_at": "2026-10-17T14:27:11Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -3773,7 +3905,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-28T15:03:40Z",
+      "pushed_at": "2026-10-19T09:06:26Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -4115,6 +4247,65 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "isimp/emot3",
+      "name": "emot3",
+      "owner": "isimp",
+      "html_url": "https://github.com/isimp/emot3",
+      "description": "A clickable emote panel for Guild Wars 2, built for Raidcore Nexus",
+      "topics": [],
+      "language": "C++",
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-15T19:19:59Z",
+      "license": null,
+      "points": 40,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "ships emot3.dll"
+          ]
+        },
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset emot3.dll"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
           ]
         }
       ],
@@ -4548,7 +4739,7 @@
       "language": "C++",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-26T04:39:56Z",
+      "pushed_at": "2026-10-17T05:37:37Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -5100,7 +5291,7 @@
       "language": "C",
       "stars": 6,
       "archived": false,
-      "pushed_at": "2026-10-06T08:09:15Z",
+      "pushed_at": "2026-10-14T22:46:33Z",
       "license": null,
       "points": 40,
       "band": "moderate",
@@ -5558,7 +5749,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 16 months ago"
+            "last push 17 months ago"
           ]
         },
         {
@@ -5569,6 +5760,65 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "ralkeon/gw2-italian-translation",
+      "name": "gw2-italian-translation",
+      "owner": "ralkeon",
+      "html_url": "https://github.com/ralkeon/gw2-italian-translation",
+      "description": "Nexus addon: Italian translation of Guild Wars 2 through Text Translator",
+      "topics": [],
+      "language": "Rust",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-19T01:51:33Z",
+      "license": null,
+      "points": 40,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "ships italian_translation.dll"
+          ]
+        },
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset italian_translation.dll"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -6047,55 +6297,6 @@
       "assessment": null
     },
     {
-      "full_name": "A3dge/Aedge-GW2-Clean-and-sharp-antialiasing-and-SSAO-preset-1440p",
-      "name": "Aedge-GW2-Clean-and-sharp-antialiasing-and-SSAO-preset-1440p",
-      "owner": "A3dge",
-      "html_url": "https://github.com/A3dge/Aedge-GW2-Clean-and-sharp-antialiasing-and-SSAO-preset-1440p",
-      "description": "Clean and Sharp preset for Guild Wars 2 in 1440p : almost no jagged edges with antialiasing, a sweet and NOT oversaturated image ",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-09-29T12:28:37Z",
-      "license": null,
-      "points": 35,
-      "band": "moderate",
-      "signals": [
-        {
-          "id": "injection",
-          "label": "Client injection or hooking",
-          "weight": 25,
-          "policy": "ua-third-party-programs",
-          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
-          "evidence": [
-            "matched \"dxgi\""
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Adler4me/GW2_SoundEffects",
       "name": "GW2_SoundEffects",
       "owner": "Adler4me",
@@ -6207,7 +6408,7 @@
       "language": "Rust",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-10-09T18:14:20Z",
+      "pushed_at": "2026-10-16T18:04:25Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -6760,7 +6961,7 @@
       "language": "C",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-08T18:47:37Z",
+      "pushed_at": "2026-10-14T17:25:03Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -6809,7 +7010,7 @@
       "language": "C++",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-06T07:00:34Z",
+      "pushed_at": "2026-10-18T06:08:33Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -6858,7 +7059,7 @@
       "language": "C++",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T08:04:34Z",
+      "pushed_at": "2026-10-19T03:41:00Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -6911,7 +7112,7 @@
       "language": "C#",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-06-21T16:15:36Z",
+      "pushed_at": "2026-10-18T19:26:48Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -7256,7 +7457,7 @@
         "wpf"
       ],
       "language": "TypeScript",
-      "stars": 0,
+      "stars": 1,
       "archived": false,
       "pushed_at": "2026-07-02T17:40:29Z",
       "license": null,
@@ -7290,7 +7491,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "0 stars"
+            "1 stars"
           ]
         }
       ],
@@ -7506,55 +7707,6 @@
       "assessment": null
     },
     {
-      "full_name": "macroadster/gw2-mumblelink",
-      "name": "gw2-mumblelink",
-      "owner": "macroadster",
-      "html_url": "https://github.com/macroadster/gw2-mumblelink",
-      "description": "Guild Wars 2 GPS",
-      "topics": [],
-      "language": "Go",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-09-27T16:20:12Z",
-      "license": null,
-      "points": 35,
-      "band": "moderate",
-      "signals": [
-        {
-          "id": "injection",
-          "label": "Client injection or hooking",
-          "weight": 25,
-          "policy": "ua-third-party-programs",
-          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
-          "evidence": [
-            "matched \"inject\""
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Melquiisedeq/my-arcdps-setup",
       "name": "my-arcdps-setup",
       "owner": "Melquiisedeq",
@@ -7573,7 +7725,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-05T13:11:22Z",
+      "pushed_at": "2026-10-17T05:53:42Z",
       "license": null,
       "points": 35,
       "band": "moderate",
@@ -7741,7 +7893,7 @@
       "language": "C++",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T00:54:15Z",
+      "pushed_at": "2026-10-15T01:34:03Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -8015,7 +8167,7 @@
         "rtae"
       ],
       "language": "C++",
-      "stars": 175,
+      "stars": 176,
       "archived": false,
       "pushed_at": "2026-09-22T12:01:55Z",
       "license": null,
@@ -8521,7 +8673,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-14T18:39:19Z",
+      "pushed_at": "2026-10-13T03:28:45Z",
       "license": "MIT",
       "points": 35,
       "band": "moderate",
@@ -8795,7 +8947,7 @@
       "language": "Python",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-11T13:23:55Z",
+      "pushed_at": "2026-10-16T22:17:14Z",
       "license": "GPL-3.0",
       "points": 30,
       "band": "moderate",
@@ -8864,6 +9016,45 @@
       "assessment": null
     },
     {
+      "full_name": "bofnald/AsuraGate",
+      "name": "AsuraGate",
+      "owner": "bofnald",
+      "html_url": "https://github.com/bofnald/AsuraGate",
+      "description": "One-click Blish HUD for Guild Wars 2 on Linux (Steam + Proton). Sets up external-dx11-overlay so Blish HUD renders inside the game, like on Windows.",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-15T20:08:19Z",
+      "license": "Apache-2.0",
+      "points": 30,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "injection",
+          "label": "Client injection or hooking",
+          "weight": 25,
+          "policy": "ua-third-party-programs",
+          "explain": "Loads code into the game process, typically via a proxy DLL or graphics hook.",
+          "evidence": [
+            "matched \"injects\""
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "BoyC/GW2TacO",
       "name": "GW2TacO",
       "owner": "BoyC",
@@ -8912,7 +9103,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T06:18:50Z",
+      "pushed_at": "2026-10-16T10:54:55Z",
       "license": "MIT",
       "points": 30,
       "band": "moderate",
@@ -9032,7 +9223,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 79 months ago"
+            "last push 80 months ago"
           ]
         },
         {
@@ -9300,7 +9491,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 102 months ago"
+            "last push 103 months ago"
           ]
         },
         {
@@ -9420,7 +9611,7 @@
         "hacktoberfest"
       ],
       "language": "C++",
-      "stars": 85,
+      "stars": 86,
       "archived": false,
       "pushed_at": "2026-09-19T13:20:13Z",
       "license": "MIT",
@@ -9540,9 +9731,9 @@
       "description": "Offline in-game translation for Guild Wars 2 - OPUS-MT + CTranslate2 - no external services, no API keys.",
       "topics": [],
       "language": "Python",
-      "stars": 0,
+      "stars": 2,
       "archived": false,
-      "pushed_at": "2026-10-12T11:26:52Z",
+      "pushed_at": "2026-10-18T22:22:30Z",
       "license": "MIT",
       "points": 30,
       "band": "moderate",
@@ -9564,7 +9755,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "0 stars"
+            "2 stars"
           ]
         }
       ],
@@ -9811,9 +10002,9 @@
         "timers"
       ],
       "language": "Rust",
-      "stars": 53,
+      "stars": 54,
       "archived": false,
-      "pushed_at": "2026-07-27T09:45:19Z",
+      "pushed_at": "2026-10-13T16:19:21Z",
       "license": "MIT",
       "points": 30,
       "band": "moderate",
@@ -9973,7 +10164,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 52 months ago"
+            "last push 53 months ago"
           ]
         },
         {
@@ -10081,7 +10272,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 22 months ago"
+            "last push 23 months ago"
           ]
         },
         {
@@ -10344,7 +10535,7 @@
       "description": "Allows an external overlay to render inside a game as a DX11 render hook. Originally made for BlishHUD and Guild Wars 2,",
       "topics": [],
       "language": "Rust",
-      "stars": 155,
+      "stars": 156,
       "archived": false,
       "pushed_at": "2026-01-18T16:06:19Z",
       "license": "Apache-2.0",
@@ -10495,6 +10686,55 @@
       "assessment": null
     },
     {
+      "full_name": "al-d3baran/gw2-characters-charts",
+      "name": "gw2-characters-charts",
+      "owner": "al-d3baran",
+      "html_url": "https://github.com/al-d3baran/gw2-characters-charts",
+      "description": "A website that generates charts from Guild Wars 2 Characters API.",
+      "topics": [],
+      "language": "JavaScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2024-10-12T22:54:48Z",
+      "license": null,
+      "points": 20,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "stale_24m",
+          "label": "Unmaintained (2+ years)",
+          "weight": 10,
+          "policy": "support-own-risk",
+          "explain": "No pushes in over two years.",
+          "evidence": [
+            "last push 24 months ago"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Alice-Lilith/ArcDps_Mechanics_plugin_Auto_Updater",
       "name": "ArcDps_Mechanics_plugin_Auto_Updater",
       "owner": "Alice-Lilith",
@@ -10516,7 +10756,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 101 months ago"
+            "last push 102 months ago"
           ]
         },
         {
@@ -10565,7 +10805,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 64 months ago"
+            "last push 65 months ago"
           ]
         },
         {
@@ -10947,55 +11187,6 @@
       "assessment": null
     },
     {
-      "full_name": "Dipenkansodaria007/gw2_streamlit",
-      "name": "gw2_streamlit",
-      "owner": "Dipenkansodaria007",
-      "html_url": "https://github.com/Dipenkansodaria007/gw2_streamlit",
-      "description": "sourced gw2 api to create streamlit dashboard",
-      "topics": [],
-      "language": "Jupyter Notebook",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2024-05-06T18:42:38Z",
-      "license": null,
-      "points": 20,
-      "band": "moderate",
-      "signals": [
-        {
-          "id": "stale_24m",
-          "label": "Unmaintained (2+ years)",
-          "weight": 10,
-          "policy": "support-own-risk",
-          "explain": "No pushes in over two years.",
-          "evidence": [
-            "last push 29 months ago"
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "dlecina/Masque_Pointy",
       "name": "Masque_Pointy",
       "owner": "dlecina",
@@ -11245,7 +11436,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 84 months ago"
+            "last push 85 months ago"
           ]
         }
       ],
@@ -11617,7 +11808,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 98 months ago"
+            "last push 99 months ago"
           ]
         },
         {
@@ -11936,7 +12127,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 71 months ago"
+            "last push 72 months ago"
           ]
         },
         {
@@ -12483,7 +12674,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 89 months ago"
+            "last push 90 months ago"
           ]
         },
         {
@@ -12532,7 +12723,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 112 months ago"
+            "last push 113 months ago"
           ]
         },
         {
@@ -12663,55 +12854,6 @@
       "assessment": null
     },
     {
-      "full_name": "Roddygithub/Gw2Analytics",
-      "name": "Gw2Analytics",
-      "owner": "Roddygithub",
-      "html_url": "https://github.com/Roddygithub/Gw2Analytics",
-      "description": "Archived — discontinued WvW analytics project. Future work continues separately as WIS (WvW Intelligence Service).",
-      "topics": [],
-      "language": "Python",
-      "stars": 1,
-      "archived": true,
-      "pushed_at": "2026-10-11T16:37:14Z",
-      "license": null,
-      "points": 20,
-      "band": "moderate",
-      "signals": [
-        {
-          "id": "archived",
-          "label": "Archived repository",
-          "weight": 10,
-          "policy": "support-own-risk",
-          "explain": "The project is archived and will not be updated after game patches.",
-          "evidence": [
-            "repository is archived on GitHub"
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "1 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Rouret/gw2-pvp-overlay",
       "name": "gw2-pvp-overlay",
       "owner": "Rouret",
@@ -12782,7 +12924,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 135 months ago"
+            "last push 136 months ago"
           ]
         },
         {
@@ -12997,7 +13139,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 85 months ago"
+            "last push 86 months ago"
           ]
         },
         {
@@ -13395,7 +13537,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 54 months ago"
+            "last push 55 months ago"
           ]
         },
         {
@@ -13465,6 +13607,55 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "writzx/gw2-addon-search",
+      "name": "gw2-addon-search",
+      "owner": "writzx",
+      "html_url": "https://github.com/writzx/gw2-addon-search",
+      "description": "",
+      "topics": [],
+      "language": "C++",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2024-10-14T16:48:37Z",
+      "license": null,
+      "points": 20,
+      "band": "moderate",
+      "signals": [
+        {
+          "id": "stale_24m",
+          "label": "Unmaintained (2+ years)",
+          "weight": 10,
+          "policy": "support-own-risk",
+          "explain": "No pushes in over two years.",
+          "evidence": [
+            "last push 24 months ago"
+          ]
+        },
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -13659,55 +13850,6 @@
       "assessment": null
     },
     {
-      "full_name": "al-d3baran/gw2-characters-charts",
-      "name": "gw2-characters-charts",
-      "owner": "al-d3baran",
-      "html_url": "https://github.com/al-d3baran/gw2-characters-charts",
-      "description": "A website that generates charts from Guild Wars 2 Characters API.",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2024-10-12T22:54:48Z",
-      "license": null,
-      "points": 15,
-      "band": "low",
-      "signals": [
-        {
-          "id": "stale_12m",
-          "label": "Slow maintenance (1-2 years)",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No pushes in over a year.",
-          "evidence": [
-            "last push 24 months ago"
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "aleios/gw2-cursoroverride",
       "name": "gw2-cursoroverride",
       "owner": "aleios",
@@ -13779,7 +13921,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 15 months ago"
+            "last push 16 months ago"
           ]
         },
         {
@@ -13828,7 +13970,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 12 months ago"
+            "last push 13 months ago"
           ]
         },
         {
@@ -13975,7 +14117,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 75 months ago"
+            "last push 76 months ago"
           ]
         },
         {
@@ -14223,7 +14365,7 @@
       "language": "TypeScript",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-12T09:31:04Z",
+      "pushed_at": "2026-10-13T03:18:16Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -14235,7 +14377,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset axiroster-1.6.0-win-x64.exe"
+            "release asset axiroster-1.7.1-win-x64.exe"
           ]
         },
         {
@@ -14356,33 +14498,28 @@
       "assessment": null
     },
     {
-      "full_name": "discretize/discretize-guides",
-      "name": "discretize-guides",
-      "owner": "discretize",
-      "html_url": "https://github.com/discretize/discretize-guides",
-      "description": "This is the source repository for all https://discretize.eu markdown guides.",
-      "topics": [
-        "fractals",
-        "guildwars2",
-        "gw2",
-        "markdown"
-      ],
-      "language": null,
-      "stars": 22,
-      "archived": true,
-      "pushed_at": "2026-01-02T20:19:52Z",
+      "full_name": "distantstatic/arcdpstool",
+      "name": "arcdpstool",
+      "owner": "distantstatic",
+      "html_url": "https://github.com/distantstatic/arcdpstool",
+      "description": "Easy to use tool to install ArcDPS for GW2 on Linux",
+      "topics": [],
+      "language": "Shell",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2025-08-20T01:56:19Z",
       "license": null,
       "points": 15,
       "band": "low",
       "signals": [
         {
-          "id": "archived",
-          "label": "Archived repository",
-          "weight": 10,
+          "id": "stale_12m",
+          "label": "Slow maintenance (1-2 years)",
+          "weight": 5,
           "policy": "support-own-risk",
-          "explain": "The project is archived and will not be updated after game patches.",
+          "explain": "No pushes in over a year.",
           "evidence": [
-            "repository is archived on GitHub"
+            "last push 14 months ago"
           ]
         },
         {
@@ -14394,22 +14531,32 @@
           "evidence": [
             "no license detected by GitHub"
           ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
         }
       ],
       "override": null,
       "assessment": null
     },
     {
-      "full_name": "distantstatic/arcdpstool",
-      "name": "arcdpstool",
-      "owner": "distantstatic",
-      "html_url": "https://github.com/distantstatic/arcdpstool",
-      "description": "Easy to use tool to install ArcDPS for GW2 on Linux",
+      "full_name": "dmizelle/arcdps_reporter",
+      "name": "arcdps_reporter",
+      "owner": "dmizelle",
+      "html_url": "https://github.com/dmizelle/arcdps_reporter",
+      "description": "",
       "topics": [],
-      "language": "Shell",
+      "language": "Rust",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2025-08-20T01:56:19Z",
+      "pushed_at": "2025-08-11T22:44:58Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -14558,7 +14705,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 13 months ago"
+            "last push 14 months ago"
           ]
         },
         {
@@ -14688,7 +14835,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-25T00:11:05Z",
+      "pushed_at": "2026-10-12T15:04:30Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -14776,7 +14923,7 @@
       "language": "Python",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T05:38:55Z",
+      "pushed_at": "2026-10-13T23:35:02Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -14843,7 +14990,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 92 months ago"
+            "last push 93 months ago"
           ]
         },
         {
@@ -15032,7 +15179,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 52 months ago"
+            "last push 53 months ago"
           ]
         },
         {
@@ -15071,7 +15218,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 22 months ago"
+            "last push 23 months ago"
           ]
         },
         {
@@ -15082,45 +15229,6 @@
           "explain": "No declared license, so redistribution and auditing terms are unclear.",
           "evidence": [
             "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "iboutsikas/gw2-addon-manager",
-      "name": "gw2-addon-manager",
-      "owner": "iboutsikas",
-      "html_url": "https://github.com/iboutsikas/gw2-addon-manager",
-      "description": "",
-      "topics": [],
-      "language": "TypeScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2024-01-27T19:08:09Z",
-      "license": "MIT",
-      "points": 15,
-      "band": "low",
-      "signals": [
-        {
-          "id": "stale_24m",
-          "label": "Unmaintained (2+ years)",
-          "weight": 10,
-          "policy": "support-own-risk",
-          "explain": "No pushes in over two years.",
-          "evidence": [
-            "last push 32 months ago"
           ]
         },
         {
@@ -15170,84 +15278,6 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "its-felix/gw2-addon-manager",
-      "name": "gw2-addon-manager",
-      "owner": "its-felix",
-      "html_url": "https://github.com/its-felix/gw2-addon-manager",
-      "description": "",
-      "topics": [],
-      "language": "TypeScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2024-01-29T02:46:00Z",
-      "license": "MIT",
-      "points": 15,
-      "band": "low",
-      "signals": [
-        {
-          "id": "stale_24m",
-          "label": "Unmaintained (2+ years)",
-          "weight": 10,
-          "policy": "support-own-risk",
-          "explain": "No pushes in over two years.",
-          "evidence": [
-            "last push 32 months ago"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "its-felix/gw2-build-api",
-      "name": "gw2-build-api",
-      "owner": "its-felix",
-      "html_url": "https://github.com/its-felix/gw2-build-api",
-      "description": "",
-      "topics": [],
-      "language": "Go",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2024-06-01T02:22:02Z",
-      "license": "MIT",
-      "points": 15,
-      "band": "low",
-      "signals": [
-        {
-          "id": "stale_24m",
-          "label": "Unmaintained (2+ years)",
-          "weight": 10,
-          "policy": "support-own-risk",
-          "explain": "No pushes in over two years.",
-          "evidence": [
-            "last push 28 months ago"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
           ]
         }
       ],
@@ -15421,7 +15451,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 12 months ago"
+            "last push 13 months ago"
           ]
         },
         {
@@ -16126,7 +16156,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 47 months ago"
+            "last push 48 months ago"
           ]
         },
         {
@@ -16166,7 +16196,7 @@
       "language": null,
       "stars": 8,
       "archived": false,
-      "pushed_at": "2026-10-12T04:34:36Z",
+      "pushed_at": "2026-10-18T02:26:20Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -16178,7 +16208,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset catbridge_2.0.3_lite_setup.exe"
+            "release asset catbridge_2.0.6_lite_setup.exe"
           ]
         },
         {
@@ -16225,7 +16255,7 @@
       "language": null,
       "stars": 7,
       "archived": false,
-      "pushed_at": "2026-10-12T07:39:48Z",
+      "pushed_at": "2026-10-18T07:30:54Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -16237,7 +16267,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset gw2kr_patch0.6.20.exe"
+            "release asset gw2kr_patch0.6.26.exe"
           ]
         },
         {
@@ -16411,7 +16441,7 @@
       "language": "TypeScript",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-07T16:17:28Z",
+      "pushed_at": "2026-10-16T12:41:15Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -16472,7 +16502,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 26 months ago"
+            "last push 27 months ago"
           ]
         },
         {
@@ -16581,6 +16611,102 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "progamesigner/rfgames-backend",
+      "name": "rfgames-backend",
+      "owner": "progamesigner",
+      "html_url": "https://github.com/progamesigner/rfgames-backend",
+      "description": "Server backends for Rush guild in Guild Wars 2",
+      "topics": [
+        "dockerfile",
+        "guildwars2",
+        "rust",
+        "rust-lang"
+      ],
+      "language": "Rust",
+      "stars": 2,
+      "archived": true,
+      "pushed_at": "2026-10-07T15:58:08Z",
+      "license": "MIT",
+      "points": 15,
+      "band": "low",
+      "signals": [
+        {
+          "id": "archived",
+          "label": "Archived repository",
+          "weight": 10,
+          "policy": "support-own-risk",
+          "explain": "The project is archived and will not be updated after game patches.",
+          "evidence": [
+            "repository is archived on GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "progamesigner/rfgames-web",
+      "name": "rfgames-web",
+      "owner": "progamesigner",
+      "html_url": "https://github.com/progamesigner/rfgames-web",
+      "description": "Website for Rush guild in Guild Wars 2",
+      "topics": [
+        "guildwars2",
+        "hugo",
+        "mithril",
+        "mithriljs",
+        "netlify",
+        "redux",
+        "sass",
+        "scss",
+        "typescript",
+        "web",
+        "webpack",
+        "website"
+      ],
+      "language": "TypeScript",
+      "stars": 2,
+      "archived": true,
+      "pushed_at": "2026-09-29T01:36:40Z",
+      "license": "MIT",
+      "points": 15,
+      "band": "low",
+      "signals": [
+        {
+          "id": "archived",
+          "label": "Archived repository",
+          "weight": 10,
+          "policy": "support-own-risk",
+          "explain": "The project is archived and will not be updated after game patches.",
+          "evidence": [
+            "repository is archived on GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "2 stars"
           ]
         }
       ],
@@ -16878,7 +17004,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 20 months ago"
+            "last push 21 months ago"
           ]
         },
         {
@@ -17154,7 +17280,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 67 months ago"
+            "last push 68 months ago"
           ]
         },
         {
@@ -17472,7 +17598,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 111 months ago"
+            "last push 112 months ago"
           ]
         },
         {
@@ -17675,7 +17801,7 @@
       "language": "JavaScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T21:47:24Z",
+      "pushed_at": "2026-10-14T20:13:26Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -17687,7 +17813,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset gw2.wealth.tracker_0.7.6_x64-setup.exe"
+            "release asset gw2.wealth.tracker_0.8.0_x64-setup.exe"
           ]
         },
         {
@@ -17722,7 +17848,7 @@
       "description": "Guild Wars 2 WvW build editor, squad composition builder, and boon/condition uptime calculator",
       "topics": [],
       "language": "TypeScript",
-      "stars": 2,
+      "stars": 3,
       "archived": false,
       "pushed_at": "2026-10-09T05:41:19Z",
       "license": null,
@@ -17756,7 +17882,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "2 stars"
+            "3 stars"
           ]
         }
       ],
@@ -17834,7 +17960,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 111 months ago"
+            "last push 112 months ago"
           ]
         },
         {
@@ -17891,16 +18017,16 @@
       "assessment": null
     },
     {
-      "full_name": "writzx/gw2-addon-search",
-      "name": "gw2-addon-search",
-      "owner": "writzx",
-      "html_url": "https://github.com/writzx/gw2-addon-search",
+      "full_name": "xEcronomus/gw2arcdpsconfig",
+      "name": "gw2arcdpsconfig",
+      "owner": "xEcronomus",
+      "html_url": "https://github.com/xEcronomus/gw2arcdpsconfig",
       "description": "",
       "topics": [],
-      "language": "C++",
+      "language": "PowerShell",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2024-10-14T16:48:37Z",
+      "pushed_at": "2025-07-20T04:54:16Z",
       "license": null,
       "points": 15,
       "band": "low",
@@ -17912,7 +18038,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 24 months ago"
+            "last push 15 months ago"
           ]
         },
         {
@@ -18239,7 +18365,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-10T20:38:52Z",
+      "pushed_at": "2026-10-17T19:38:26Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18366,7 +18492,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T18:25:12Z",
+      "pushed_at": "2026-10-18T20:41:29Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18409,7 +18535,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T18:28:17Z",
+      "pushed_at": "2026-10-18T20:46:11Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18452,7 +18578,7 @@
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T18:28:22Z",
+      "pushed_at": "2026-10-18T20:46:16Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18627,6 +18753,45 @@
       "assessment": null
     },
     {
+      "full_name": "Avalanchegloexhibit/gwtoolbox-plus-plus",
+      "name": "gwtoolbox-plus-plus",
+      "owner": "Avalanchegloexhibit",
+      "html_url": "https://github.com/Avalanchegloexhibit/gwtoolbox-plus-plus",
+      "description": "The essential companion app for Guild Wars 2",
+      "topics": [],
+      "language": null,
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-17T08:45:43Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Azrub/CursorAnchor",
       "name": "CursorAnchor",
       "owner": "Azrub",
@@ -18716,7 +18881,7 @@
       "language": "CSS",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T01:59:37Z",
+      "pushed_at": "2026-10-17T04:01:54Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18875,7 +19040,7 @@
       "language": "C",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-09-12T07:43:26Z",
+      "pushed_at": "2026-10-12T16:12:38Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18905,16 +19070,16 @@
       "assessment": null
     },
     {
-      "full_name": "bignutchanon/gw2taco-thai",
-      "name": "gw2taco-thai",
-      "owner": "bignutchanon",
-      "html_url": "https://github.com/bignutchanon/gw2taco-thai",
-      "description": "Unofficial Thai translation and bug-fix patch for GW2 TacO (BoyC). CC BY-NC 4.0.",
+      "full_name": "bobomurodovhumoyun546-oss/gw20humoyun",
+      "name": "gw20humoyun",
+      "owner": "bobomurodovhumoyun546-oss",
+      "html_url": "https://github.com/bobomurodovhumoyun546-oss/gw20humoyun",
+      "description": "",
       "topics": [],
       "language": null,
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-10T12:30:25Z",
+      "pushed_at": "2026-10-17T12:31:59Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -18953,7 +19118,7 @@
       "language": "Rust",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-03T00:09:01Z",
+      "pushed_at": "2026-10-18T12:21:07Z",
       "license": "MIT",
       "points": 10,
       "band": "low",
@@ -18966,6 +19131,45 @@
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
             "release asset breakbar-launcher.exe"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "bucsai/gw2-wayfinder",
+      "name": "gw2-wayfinder",
+      "owner": "bucsai",
+      "html_url": "https://github.com/bucsai/gw2-wayfinder",
+      "description": "",
+      "topics": [],
+      "language": null,
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T19:10:12Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
           ]
         },
         {
@@ -19015,6 +19219,45 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "1 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "cdcc-jpg/gw2-ume",
+      "name": "gw2-ume",
+      "owner": "cdcc-jpg",
+      "html_url": "https://github.com/cdcc-jpg/gw2-ume",
+      "description": "Neuro-Symbolic Semantic Matching & Entity Linking Engine for Guild Wars 2 Ontologies",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T10:15:47Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -19343,7 +19586,7 @@
       "language": "JavaScript",
       "stars": 3,
       "archived": false,
-      "pushed_at": "2026-10-09T01:26:18Z",
+      "pushed_at": "2026-10-15T16:28:38Z",
       "license": "GPL-3.0",
       "points": 10,
       "band": "low",
@@ -19382,7 +19625,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-08T19:17:54Z",
+      "pushed_at": "2026-10-13T01:06:36Z",
       "license": "GPL-3.0",
       "points": 10,
       "band": "low",
@@ -19394,7 +19637,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset axiom-setup-0.6.1.exe"
+            "release asset axiom-setup-0.7.0.exe"
           ]
         },
         {
@@ -19504,7 +19747,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-14T11:13:46Z",
+      "pushed_at": "2026-10-17T10:51:52Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -19583,6 +19826,45 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-04-03T21:38:28Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "DeltaRaidcore/furnacetaken.com",
+      "name": "furnacetaken.com",
+      "owner": "DeltaRaidcore",
+      "html_url": "https://github.com/DeltaRaidcore/furnacetaken.com",
+      "description": "A simple website to track Guild Wars 2's bugs, features, releases and balance cadence.",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-14T14:17:32Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -19848,6 +20130,45 @@
       "assessment": null
     },
     {
+      "full_name": "doubleLoverabby/Elite",
+      "name": "Elite",
+      "owner": "doubleLoverabby",
+      "html_url": "https://github.com/doubleLoverabby/Elite",
+      "description": "Monitor live ArcDps logs, parse data using Elite Insights and send WvW fight reports to a Discord channel and optionally a Twitch channel.",
+      "topics": [],
+      "language": "JavaScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2025-08-13T12:23:15Z",
+      "license": "MIT",
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "stale_12m",
+          "label": "Slow maintenance (1-2 years)",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No pushes in over a year.",
+          "evidence": [
+            "last push 14 months ago"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "dustfeather/gw2roi",
       "name": "gw2roi",
       "owner": "dustfeather",
@@ -19864,7 +20185,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-08T22:18:12Z",
+      "pushed_at": "2026-10-15T22:15:33Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -19907,7 +20228,7 @@
         "multibox"
       ],
       "language": "C++",
-      "stars": 5,
+      "stars": 6,
       "archived": false,
       "pushed_at": "2026-09-26T14:56:41Z",
       "license": "MIT",
@@ -19931,7 +20252,46 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "5 stars"
+            "6 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "eggplants/gw2aws",
+      "name": "gw2aws",
+      "owner": "eggplants",
+      "html_url": "https://github.com/eggplants/gw2aws",
+      "description": "SAML login to AWS via Google Workspace using Playwright",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-19T03:26:56Z",
+      "license": "MIT",
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
+          "evidence": [
+            "release asset gw2aws-windows-amd64.exe"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
           ]
         }
       ],
@@ -19990,7 +20350,7 @@
       "language": "Python",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-02-04T13:45:53Z",
+      "pushed_at": "2026-10-16T12:10:11Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -20137,84 +20497,6 @@
       "assessment": null
     },
     {
-      "full_name": "fjhanevo/gw2-tp-project",
-      "name": "gw2-tp-project",
-      "owner": "fjhanevo",
-      "html_url": "https://github.com/fjhanevo/gw2-tp-project",
-      "description": "",
-      "topics": [],
-      "language": "Rust",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-09T08:53:55Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "floraaubry/GW2RadialNexus",
-      "name": "GW2RadialNexus",
-      "owner": "floraaubry",
-      "html_url": "https://github.com/floraaubry/GW2RadialNexus",
-      "description": "",
-      "topics": [],
-      "language": "C++",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T18:52:47Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "fodaveg/tyrian-companion-blish",
       "name": "tyrian-companion-blish",
       "owner": "fodaveg",
@@ -20261,6 +20543,45 @@
       }
     },
     {
+      "full_name": "Fueltumagnify/blish-hud",
+      "name": "blish-hud",
+      "owner": "Fueltumagnify",
+      "html_url": "https://github.com/Fueltumagnify/blish-hud",
+      "description": "Addon host and HUD overlay for Guild Wars 2",
+      "topics": [],
+      "language": null,
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-17T08:55:55Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "gartkb/Garts-Great-Tools",
       "name": "Garts-Great-Tools",
       "owner": "gartkb",
@@ -20270,85 +20591,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T03:51:23Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "gegenymate-gw2/tcg-backend",
-      "name": "tcg-backend",
-      "owner": "gegenymate-gw2",
-      "html_url": "https://github.com/gegenymate-gw2/tcg-backend",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-11T14:11:55Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "gegenymate-gw2/tcg-backend2",
-      "name": "tcg-backend2",
-      "owner": "gegenymate-gw2",
-      "html_url": "https://github.com/gegenymate-gw2/tcg-backend2",
-      "description": "",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-11T14:13:44Z",
+      "pushed_at": "2026-10-18T02:30:19Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -20399,7 +20642,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 21 months ago"
+            "last push 22 months ago"
           ]
         },
         {
@@ -20410,396 +20653,6 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "3 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-cloneRepoStaging-scaAndRenovate3/12364_Jeff-Patel_1012_022218_ghc_gw2_failed",
-      "name": "12364_Jeff-Patel_1012_022218_ghc_gw2_failed",
-      "owner": "ghc-cloneRepoStaging-scaAndRenovate3",
-      "html_url": "https://github.com/ghc-cloneRepoStaging-scaAndRenovate3/12364_Jeff-Patel_1012_022218_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": "Python",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-12T02:22:22Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-cloneRepoStaging-scaAndRenovate3/12433_Gabriel-Lane_1012_013541_ghc_gw2_failed",
-      "name": "12433_Gabriel-Lane_1012_013541_ghc_gw2_failed",
-      "owner": "ghc-cloneRepoStaging-scaAndRenovate3",
-      "html_url": "https://github.com/ghc-cloneRepoStaging-scaAndRenovate3/12433_Gabriel-Lane_1012_013541_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": "Scala",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-12T01:38:19Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-cloneRepoStaging-scaAndRenovate3/12433_Jennifer-Mason_1012_013437_ghc_gw2_failed",
-      "name": "12433_Jennifer-Mason_1012_013437_ghc_gw2_failed",
-      "owner": "ghc-cloneRepoStaging-scaAndRenovate3",
-      "html_url": "https://github.com/ghc-cloneRepoStaging-scaAndRenovate3/12433_Jennifer-Mason_1012_013437_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": "Scala",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-12T01:37:13Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-2/15460_Kathleen-Fleming_1007_034948_ghc_gw2_failed",
-      "name": "15460_Kathleen-Fleming_1007_034948_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-2",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-2/15460_Kathleen-Fleming_1007_034948_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:49:55Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-2/15460_Randall-Terry-Jr_1007_034948_ghc_gw2_failed",
-      "name": "15460_Randall-Terry-Jr_1007_034948_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-2",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-2/15460_Randall-Terry-Jr_1007_034948_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:49:52Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-4/15457_Ashley-Thomas_1007_034832_ghc_gw2_failed",
-      "name": "15457_Ashley-Thomas_1007_034832_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-4",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-4/15457_Ashley-Thomas_1007_034832_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:48:37Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-5/15454_Karina-Galvan_1007_034536_ghc_gw2_failed",
-      "name": "15454_Karina-Galvan_1007_034536_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-5",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-5/15454_Karina-Galvan_1007_034536_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:45:40Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-6/15455_Thomas-Moore_1007_034628_ghc_gw2_failed",
-      "name": "15455_Thomas-Moore_1007_034628_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-6",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-6/15455_Thomas-Moore_1007_034628_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:46:32Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-8/15456_Sarah-Thomas_1007_034718_ghc_gw2_failed",
-      "name": "15456_Sarah-Thomas_1007_034718_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-8",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-8/15456_Sarah-Thomas_1007_034718_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:47:22Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "ghc-dp-staging-onboarding-scenario-9/15461_Brittney-Webb_1007_035111_ghc_gw2_failed",
-      "name": "15461_Brittney-Webb_1007_035111_ghc_gw2_failed",
-      "owner": "ghc-dp-staging-onboarding-scenario-9",
-      "html_url": "https://github.com/ghc-dp-staging-onboarding-scenario-9/15461_Brittney-Webb_1007_035111_ghc_gw2_failed",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T03:51:15Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
           ]
         }
       ],
@@ -21122,7 +20975,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 61 months ago"
+            "last push 62 months ago"
           ]
         }
       ],
@@ -21139,7 +20992,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-04T12:32:19Z",
+      "pushed_at": "2026-10-18T14:17:18Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -21375,7 +21228,7 @@
       "language": "Svelte",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-01T22:20:34Z",
+      "pushed_at": "2026-10-18T13:46:41Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -21453,7 +21306,7 @@
       "language": "CSS",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-10T05:17:19Z",
+      "pushed_at": "2026-10-19T04:12:55Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -21648,45 +21501,6 @@
       "assessment": null
     },
     {
-      "full_name": "imothep666/WaypointForGuildWars2",
-      "name": "WaypointForGuildWars2",
-      "owner": "imothep666",
-      "html_url": "https://github.com/imothep666/WaypointForGuildWars2",
-      "description": "Companion App for Guild Wars 2",
-      "topics": [],
-      "language": "C#",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-09T12:05:04Z",
-      "license": "GPL-3.0",
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "unsigned_binaries",
-          "label": "Ships prebuilt binaries",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
-          "evidence": [
-            "release asset waypointbridge-bridge-win-setup.exe"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "jackpoz/GW2-ArcdpsMock",
       "name": "GW2-ArcdpsMock",
       "owner": "jackpoz",
@@ -21697,45 +21511,6 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-02-16T18:36:11Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "janberges/gw2ebmb",
-      "name": "gw2ebmb",
-      "owner": "janberges",
-      "html_url": "https://github.com/janberges/gw2ebmb",
-      "description": "GW/Eliashberg calculations for Sr₂RuO₄",
-      "topics": [],
-      "language": "Python",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T09:52:39Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -21787,45 +21562,6 @@
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
             "release asset gw2-addon-manager.exe"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "jfalasc/gw2lfg.net",
-      "name": "gw2lfg.net",
-      "owner": "jfalasc",
-      "html_url": "https://github.com/jfalasc/gw2lfg.net",
-      "description": "",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-12T03:25:51Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
           ]
         },
         {
@@ -22030,7 +21766,7 @@
       "language": "TypeScript",
       "stars": 3,
       "archived": false,
-      "pushed_at": "2026-10-12T05:47:09Z",
+      "pushed_at": "2026-10-19T03:52:22Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22060,123 +21796,6 @@
       "assessment": null
     },
     {
-      "full_name": "kajouayame/wvw-logs",
-      "name": "wvw-logs",
-      "owner": "kajouayame",
-      "html_url": "https://github.com/kajouayame/wvw-logs",
-      "description": "Guild Wars 2 - WvW Logs",
-      "topics": [],
-      "language": "CSS",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-09-28T16:14:39Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "Kaleopan/GW2_Log_Script",
-      "name": "GW2_Log_Script",
-      "owner": "Kaleopan",
-      "html_url": "https://github.com/Kaleopan/GW2_Log_Script",
-      "description": "",
-      "topics": [],
-      "language": "Batchfile",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T13:16:53Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "kawafussel/gw2-logs",
-      "name": "gw2-logs",
-      "owner": "kawafussel",
-      "html_url": "https://github.com/kawafussel/gw2-logs",
-      "description": "logs wvw",
-      "topics": [],
-      "language": "CSS",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T19:36:36Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "kdoto404/RotationOverlay",
       "name": "RotationOverlay",
       "owner": "kdoto404",
@@ -22187,6 +21806,84 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-09-04T16:32:36Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "keirbhaltair/gw2-zone-map",
+      "name": "gw2-zone-map",
+      "owner": "keirbhaltair",
+      "html_url": "https://github.com/keirbhaltair/gw2-zone-map",
+      "description": "",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-13T22:33:18Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Kell-Kaychup/GW2_Squad_Organizer",
+      "name": "GW2_Squad_Organizer",
+      "owner": "Kell-Kaychup",
+      "html_url": "https://github.com/Kell-Kaychup/GW2_Squad_Organizer",
+      "description": "",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T22:57:05Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22385,7 +22082,7 @@
       "language": "C#",
       "stars": 3,
       "archived": false,
-      "pushed_at": "2026-10-08T11:18:47Z",
+      "pushed_at": "2026-10-16T05:21:21Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22415,28 +22112,28 @@
       "assessment": null
     },
     {
-      "full_name": "lovePinesnop/Elite",
-      "name": "Elite",
-      "owner": "lovePinesnop",
-      "html_url": "https://github.com/lovePinesnop/Elite",
-      "description": "Monitor live ArcDps logs, parse data using Elite Insights and send WvW fight reports to a Discord channel and optionally a Twitch channel.",
+      "full_name": "maelick/gw2fashionista",
+      "name": "gw2fashionista",
+      "owner": "maelick",
+      "html_url": "https://github.com/maelick/gw2fashionista",
+      "description": "Manage GW2 fashion templates",
       "topics": [],
-      "language": "JavaScript",
+      "language": "Rust",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2025-08-13T12:23:15Z",
+      "pushed_at": "2026-10-16T22:19:03Z",
       "license": "MIT",
       "points": 10,
       "band": "low",
       "signals": [
         {
-          "id": "stale_12m",
-          "label": "Slow maintenance (1-2 years)",
+          "id": "unsigned_binaries",
+          "label": "Ships prebuilt binaries",
           "weight": 5,
           "policy": "support-own-risk",
-          "explain": "No pushes in over a year.",
+          "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "last push 14 months ago"
+            "release asset gw2fashionista-cli-0.4.0-beta.2-x86_64-pc-windows-msvc.exe"
           ]
         },
         {
@@ -22493,45 +22190,6 @@
       "assessment": null
     },
     {
-      "full_name": "marcustyphoon/gw2-rotation-formatter",
-      "name": "gw2-rotation-formatter",
-      "owner": "marcustyphoon",
-      "html_url": "https://github.com/marcustyphoon/gw2-rotation-formatter",
-      "description": "Format Guild Wars 2 skill rotations straight from dps.report.",
-      "topics": [],
-      "language": "TypeScript",
-      "stars": 1,
-      "archived": false,
-      "pushed_at": "2026-10-05T21:07:39Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "1 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Marvkop/Gw2AddonManager",
       "name": "Gw2AddonManager",
       "owner": "Marvkop",
@@ -22580,7 +22238,7 @@
       "language": "CSS",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T22:05:28Z",
+      "pushed_at": "2026-10-18T22:08:54Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22625,7 +22283,7 @@
       "language": "Svelte",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-09-30T18:54:53Z",
+      "pushed_at": "2026-10-18T20:39:10Z",
       "license": "MIT",
       "points": 10,
       "band": "low",
@@ -22637,7 +22295,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset portal.protocol_0.7.0_x64-setup.exe"
+            "release asset portal.protocol_0.7.2_x64-setup.exe"
           ]
         },
         {
@@ -22725,7 +22383,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 46 months ago"
+            "last push 47 months ago"
           ]
         }
       ],
@@ -22743,45 +22401,6 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-10-08T15:52:33Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "Moomins07/gw2-story-journal",
-      "name": "gw2-story-journal",
-      "owner": "Moomins07",
-      "html_url": "https://github.com/Moomins07/gw2-story-journal",
-      "description": "",
-      "topics": [],
-      "language": "CSS",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T20:05:15Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22943,7 +22562,46 @@
       "language": "Shell",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T09:02:39Z",
+      "pushed_at": "2026-10-19T07:38:45Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Nymousse/carnet-gw2",
+      "name": "carnet-gw2",
+      "owner": "Nymousse",
+      "html_url": "https://github.com/Nymousse/carnet-gw2",
+      "description": "",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-15T06:30:53Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -22982,7 +22640,7 @@
       "language": "Python",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-11T06:52:51Z",
+      "pushed_at": "2026-10-19T06:52:24Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -23099,7 +22757,7 @@
       "language": "JavaScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T03:15:14Z",
+      "pushed_at": "2026-10-18T23:54:50Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -23333,12 +22991,12 @@
       "name": "GW2-Tab-Converter",
       "owner": "PotatoRhythm",
       "html_url": "https://github.com/PotatoRhythm/GW2-Tab-Converter",
-      "description": "Converts MuseScore scores into Guild Wars 2 instrument tabs",
+      "description": "Converts MuseScore scores and MIDI into Guild Wars 2 instrument tabs",
       "topics": [],
       "language": "Java",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-11T11:04:19Z",
+      "pushed_at": "2026-10-13T02:28:50Z",
       "license": "GPL-3.0",
       "points": 10,
       "band": "low",
@@ -23491,45 +23149,6 @@
       "assessment": null
     },
     {
-      "full_name": "Rajesh0000018/gw2-urban-energy-advisory",
-      "name": "gw2-urban-energy-advisory",
-      "owner": "Rajesh0000018",
-      "html_url": "https://github.com/Rajesh0000018/gw2-urban-energy-advisory",
-      "description": "",
-      "topics": [],
-      "language": "Java",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-07T19:19:37Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Ranelle19/Second-Screen",
       "name": "Second-Screen",
       "owner": "Ranelle19",
@@ -23585,6 +23204,45 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-09-23T02:36:03Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "rikaschmitt/gw2-quizgame",
+      "name": "gw2-quizgame",
+      "owner": "rikaschmitt",
+      "html_url": "https://github.com/rikaschmitt/gw2-quizgame",
+      "description": "Sistema de Quiz para Guild Wars 2.",
+      "topics": [],
+      "language": null,
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-15T17:14:16Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -23671,45 +23329,6 @@
       "assessment": null
     },
     {
-      "full_name": "samirmina/MumbleLink-arcDPS",
-      "name": "MumbleLink-arcDPS",
-      "owner": "samirmina",
-      "html_url": "https://github.com/samirmina/MumbleLink-arcDPS",
-      "description": "",
-      "topics": [],
-      "language": null,
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-09-19T17:28:05Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Sauryelle/gw2-virtual-piano",
       "name": "gw2-virtual-piano",
       "owner": "Sauryelle",
@@ -23719,7 +23338,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T22:57:13Z",
+      "pushed_at": "2026-10-13T21:14:16Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -23923,7 +23542,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T03:34:05Z",
+      "pushed_at": "2026-10-19T02:37:23Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24049,6 +23668,45 @@
       "assessment": null
     },
     {
+      "full_name": "skuldgerry/raidguides",
+      "name": "raidguides",
+      "owner": "skuldgerry",
+      "html_url": "https://github.com/skuldgerry/raidguides",
+      "description": "Guias de raids de Guild Wars 2 em Português, preservadas e publicadas com Fumadocs.",
+      "topics": [],
+      "language": "MDX",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-13T22:32:11Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Snowy1794/Arcdps-boon-table-translation-Chinese-simplified",
       "name": "Arcdps-boon-table-translation-Chinese-simplified",
       "owner": "Snowy1794",
@@ -24059,6 +23717,45 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2025-11-03T18:25:13Z",
+      "license": null,
+      "points": 10,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "spazzy123/GW2WVW",
+      "name": "GW2WVW",
+      "owner": "spazzy123",
+      "html_url": "https://github.com/spazzy123/GW2WVW",
+      "description": "",
+      "topics": [],
+      "language": "CSS",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T02:36:50Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24140,7 +23837,7 @@
         "reffect-pack"
       ],
       "language": "Shell",
-      "stars": 3,
+      "stars": 4,
       "archived": false,
       "pushed_at": "2026-05-02T22:38:41Z",
       "license": null,
@@ -24164,7 +23861,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "3 stars"
+            "4 stars"
           ]
         }
       ],
@@ -24346,45 +24043,6 @@
       "assessment": null
     },
     {
-      "full_name": "storty-hub/gw2-event-timers",
-      "name": "gw2-event-timers",
-      "owner": "storty-hub",
-      "html_url": "https://github.com/storty-hub/gw2-event-timers",
-      "description": "event timers for gw2",
-      "topics": [],
-      "language": "Kotlin",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T08:55:33Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "StupsKiesel/gw2-api-py",
       "name": "gw2-api-py",
       "owner": "StupsKiesel",
@@ -24550,7 +24208,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T07:51:24Z",
+      "pushed_at": "2026-10-19T08:20:38Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24659,7 +24317,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T02:22:41Z",
+      "pushed_at": "2026-10-19T02:28:06Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24767,16 +24425,16 @@
       "assessment": null
     },
     {
-      "full_name": "Tijseh/gw2buildmaker",
-      "name": "gw2buildmaker",
-      "owner": "Tijseh",
-      "html_url": "https://github.com/Tijseh/gw2buildmaker",
-      "description": "",
+      "full_name": "tonpeedz-dotcom/Attendance-ES-Qualty-GW2",
+      "name": "Attendance-ES-Qualty-GW2",
+      "owner": "tonpeedz-dotcom",
+      "html_url": "https://github.com/tonpeedz-dotcom/Attendance-ES-Qualty-GW2",
+      "description": "ใช้สำหรับ Check Attendance ของ ES Quality GW#2",
       "topics": [],
-      "language": null,
+      "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-08T13:49:50Z",
+      "pushed_at": "2026-10-19T09:32:14Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24815,7 +24473,7 @@
       "language": null,
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-06T21:40:06Z",
+      "pushed_at": "2026-10-15T17:13:00Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -24838,84 +24496,6 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "1 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "turbocanary/turbotest_z2rbgw00_gw2y0z06",
-      "name": "turbotest_z2rbgw00_gw2y0z06",
-      "owner": "turbocanary",
-      "html_url": "https://github.com/turbocanary/turbotest_z2rbgw00_gw2y0z06",
-      "description": "",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-09T00:36:24Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "turbocanary/turbotest_z2rbgw00_gw2y0z06-2",
-      "name": "turbotest_z2rbgw00_gw2y0z06-2",
-      "owner": "turbocanary",
-      "html_url": "https://github.com/turbocanary/turbotest_z2rbgw00_gw2y0z06-2",
-      "description": "",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-09T00:36:44Z",
-      "license": null,
-      "points": 10,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
           ]
         }
       ],
@@ -25135,7 +24715,7 @@
       "language": "JavaScript",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-11T20:58:22Z",
+      "pushed_at": "2026-10-16T09:19:55Z",
       "license": null,
       "points": 10,
       "band": "low",
@@ -25348,7 +24928,7 @@
       "language": "Go",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-06T11:39:01Z",
+      "pushed_at": "2026-10-15T14:29:24Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -25496,6 +25076,64 @@
       "assessment": null
     },
     {
+      "full_name": "AsherGlick/Burrito",
+      "name": "Burrito",
+      "owner": "AsherGlick",
+      "html_url": "https://github.com/AsherGlick/Burrito",
+      "description": "An overlay tool for Guild Wars 2 that works on linux",
+      "topics": [],
+      "language": "C++",
+      "stars": 116,
+      "archived": false,
+      "pushed_at": "2025-10-13T02:42:44Z",
+      "license": "GPL-2.0",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "stale_12m",
+          "label": "Slow maintenance (1-2 years)",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No pushes in over a year.",
+          "evidence": [
+            "last push 12 months ago"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "asterius1/bench-buddy",
+      "name": "bench-buddy",
+      "owner": "asterius1",
+      "html_url": "https://github.com/asterius1/bench-buddy",
+      "description": "Guild Wars 2 golem rotation checker with a Nexus overlay: Condi Berserker and Power Scrapper vs a benchmark log",
+      "topics": [],
+      "language": "Rust",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T16:17:16Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "avatharbe/bbguild",
       "name": "bbguild",
       "owner": "avatharbe",
@@ -25577,35 +25215,6 @@
       "assessment": null
     },
     {
-      "full_name": "azirikly/algorithms-gw26",
-      "name": "algorithms-gw26",
-      "owner": "azirikly",
-      "html_url": "https://github.com/azirikly/algorithms-gw26",
-      "description": "GW Undergrad Algorithms website Fall 2026 ",
-      "topics": [],
-      "language": "SCSS",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-08T18:06:49Z",
-      "license": "MIT",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "BadPingHere/dernal",
       "name": "dernal",
       "owner": "BadPingHere",
@@ -25679,7 +25288,7 @@
       "language": "C#",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T10:37:26Z",
+      "pushed_at": "2026-10-18T10:31:20Z",
       "license": "GPL-3.0",
       "points": 5,
       "band": "low",
@@ -25790,6 +25399,35 @@
       "assessment": null
     },
     {
+      "full_name": "chenpu17/cc-gw2",
+      "name": "cc-gw2",
+      "owner": "chenpu17",
+      "html_url": "https://github.com/chenpu17/cc-gw2",
+      "description": "",
+      "topics": [],
+      "language": "Rust",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-14T11:12:19Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "christhegoalie/GW2_GoPathMaker",
       "name": "GW2_GoPathMaker",
       "owner": "christhegoalie",
@@ -25829,43 +25467,6 @@
       "assessment": null
     },
     {
-      "full_name": "darek-margas/aws-lambda-gw2pvo-uploader",
-      "name": "aws-lambda-gw2pvo-uploader",
-      "owner": "darek-margas",
-      "html_url": "https://github.com/darek-margas/aws-lambda-gw2pvo-uploader",
-      "description": "This is AWS Lambda-packed Goodwe (SEMS) to PVO uploader",
-      "topics": [
-        "goodwe",
-        "goodwe-sems",
-        "goodwe-sems-plus",
-        "pvoutput",
-        "pvoutput-api",
-        "sems",
-        "sems-portal"
-      ],
-      "language": "Python",
-      "stars": 2,
-      "archived": false,
-      "pushed_at": "2026-10-11T03:57:09Z",
-      "license": "LGPL-2.1",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "2 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "darkharasho/axibridge",
       "name": "axibridge",
       "owner": "darkharasho",
@@ -25875,7 +25476,7 @@
       "language": "HTML",
       "stars": 13,
       "archived": false,
-      "pushed_at": "2026-10-11T22:01:12Z",
+      "pushed_at": "2026-10-18T06:08:17Z",
       "license": "GPL-3.0",
       "points": 5,
       "band": "low",
@@ -25887,7 +25488,7 @@
           "policy": "support-own-risk",
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
-            "release asset axibridge-3.22.6-setup.exe"
+            "release asset axibridge-3.22.9-setup.exe"
           ]
         }
       ],
@@ -25933,7 +25534,7 @@
       "language": "Python",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-06T19:09:48Z",
+      "pushed_at": "2026-10-14T19:05:31Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -25963,35 +25564,6 @@
       "stars": 0,
       "archived": false,
       "pushed_at": "2026-09-29T05:06:41Z",
-      "license": "MIT",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "DCAP-GW2/dcap-gw2.github.io",
-      "name": "dcap-gw2.github.io",
-      "owner": "DCAP-GW2",
-      "html_url": "https://github.com/DCAP-GW2/dcap-gw2.github.io",
-      "description": "DCAP Community Site",
-      "topics": [],
-      "language": "JavaScript",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-09T02:02:24Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26146,35 +25718,6 @@
       "assessment": null
     },
     {
-      "full_name": "DracanX/ProjetoTyria",
-      "name": "ProjetoTyria",
-      "owner": "DracanX",
-      "html_url": "https://github.com/DracanX/ProjetoTyria",
-      "description": "Tradutor PT-BR para Guild Wars 2",
-      "topics": [],
-      "language": "Python",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-12T03:19:47Z",
-      "license": "MIT",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "Drevarr/EVTC_parser",
       "name": "EVTC_parser",
       "owner": "Drevarr",
@@ -26204,16 +25747,27 @@
       "assessment": null
     },
     {
-      "full_name": "Emisan01/gw2chatlator",
-      "name": "gw2chatlator",
-      "owner": "Emisan01",
-      "html_url": "https://github.com/Emisan01/gw2chatlator",
-      "description": "GW2 chat enhancer for automatic translation, input correction, learning and more – smooths misunderstandings into \"ah, I get you\" 😃",
-      "topics": [],
-      "language": "C++",
-      "stars": 1,
+      "full_name": "FavioVazquez/tycho-to-gw250114",
+      "name": "tycho-to-gw250114",
+      "owner": "FavioVazquez",
+      "html_url": "https://github.com/FavioVazquez/tycho-to-gw250114",
+      "description": "Three results in physics re-measured from the primary records with the answer withheld: Kepler from Tycho's logs, Mercury's perihelion from Newcomb, and the GW250114 horizon area.",
+      "topics": [
+        "ai-agents",
+        "general-relativity",
+        "gravitational-waves",
+        "gw250114",
+        "history-of-physics",
+        "kepler",
+        "mercury-perihelion",
+        "pre-registration",
+        "reproducibility",
+        "tycho-brahe"
+      ],
+      "language": "Python",
+      "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T05:27:03Z",
+      "pushed_at": "2026-10-16T16:04:06Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26225,7 +25779,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "1 stars"
+            "0 stars"
           ]
         }
       ],
@@ -26258,7 +25812,7 @@
       "language": "Go",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T07:32:35Z",
+      "pushed_at": "2026-10-14T07:23:48Z",
       "license": "Apache-2.0",
       "points": 5,
       "band": "low",
@@ -26325,7 +25879,7 @@
       "language": "C#",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-29T15:12:27Z",
+      "pushed_at": "2026-10-14T15:06:22Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26518,7 +26072,7 @@
       "language": "Kotlin",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-03T11:05:51Z",
+      "pushed_at": "2026-10-18T10:39:44Z",
       "license": "LGPL-3.0",
       "points": 5,
       "band": "low",
@@ -26553,7 +26107,7 @@
       "language": "Kotlin",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-10-08T10:49:01Z",
+      "pushed_at": "2026-10-15T07:22:48Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26588,7 +26142,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T05:22:23Z",
+      "pushed_at": "2026-10-19T01:10:56Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26620,7 +26174,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-10T17:10:14Z",
+      "pushed_at": "2026-10-15T10:33:05Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26653,7 +26207,7 @@
       "language": "TypeScript",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-12T11:11:48Z",
+      "pushed_at": "2026-10-18T17:45:32Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26682,7 +26236,7 @@
       "language": "TypeScript",
       "stars": 3,
       "archived": false,
-      "pushed_at": "2026-10-12T09:00:04Z",
+      "pushed_at": "2026-10-16T13:16:22Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26716,7 +26270,7 @@
       "language": "TypeScript",
       "stars": 6,
       "archived": false,
-      "pushed_at": "2026-10-12T01:30:10Z",
+      "pushed_at": "2026-10-19T01:17:30Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26782,7 +26336,7 @@
       "language": "TypeScript",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-10-12T09:05:52Z",
+      "pushed_at": "2026-10-16T13:48:30Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -26795,6 +26349,35 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "HasKha/gw2-markers",
+      "name": "gw2-markers",
+      "owner": "HasKha",
+      "html_url": "https://github.com/HasKha/gw2-markers",
+      "description": "",
+      "topics": [],
+      "language": "Python",
+      "stars": 3,
+      "archived": false,
+      "pushed_at": "2026-10-14T17:46:46Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "3 stars"
           ]
         }
       ],
@@ -26963,6 +26546,35 @@
       "assessment": null
     },
     {
+      "full_name": "johngault007/Guild-Wars-2-Guides",
+      "name": "Guild-Wars-2-Guides",
+      "owner": "johngault007",
+      "html_url": "https://github.com/johngault007/Guild-Wars-2-Guides",
+      "description": "A collection of guides created by guild members for new and veteran Guild Wars 2 players that cover common questions and activities.",
+      "topics": [],
+      "language": null,
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-14T19:23:33Z",
+      "license": "GPL-3.0",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "jower0815/WvW-Chat-Summary",
       "name": "WvW-Chat-Summary",
       "owner": "jower0815",
@@ -27046,7 +26658,7 @@
       "language": "Python",
       "stars": 26,
       "archived": false,
-      "pushed_at": "2026-04-04T18:28:03Z",
+      "pushed_at": "2026-10-18T17:08:24Z",
       "license": null,
       "points": 5,
       "band": "low",
@@ -27136,7 +26748,7 @@
       "language": "Kotlin",
       "stars": 7,
       "archived": false,
-      "pushed_at": "2026-10-12T09:22:48Z",
+      "pushed_at": "2026-10-13T13:29:13Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27272,6 +26884,35 @@
       "assessment": null
     },
     {
+      "full_name": "letsid/gw2cc-telegram-notify",
+      "name": "gw2cc-telegram-notify",
+      "owner": "letsid",
+      "html_url": "https://github.com/letsid/gw2cc-telegram-notify",
+      "description": "gw2cc plugin: Telegram notifications for death, commander changes, chat mentions and whispers",
+      "topics": [],
+      "language": "GDScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T08:20:57Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Linkaaaaa/CrashLogAnalyzer",
       "name": "CrashLogAnalyzer",
       "owner": "Linkaaaaa",
@@ -27316,7 +26957,7 @@
       "language": "Python",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-02T15:55:47Z",
+      "pushed_at": "2026-10-16T14:04:17Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27329,6 +26970,51 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Mahargip/quickbuilds-gw2",
+      "name": "quickbuilds-gw2",
+      "owner": "Mahargip",
+      "html_url": "https://github.com/Mahargip/quickbuilds-gw2",
+      "description": "A lightweight, fast build template manager for Guild Wars 2 (Blish HUD). Organize unlimited builds by profession, preview gear notes, and copy chat codes with one click.",
+      "topics": [
+        "blish-hud",
+        "blish-hud-module",
+        "blishhud-addon",
+        "build-manager",
+        "build-templates",
+        "csharp",
+        "dotnet",
+        "game-tools",
+        "gaming-overlay",
+        "guild-wars-2",
+        "guildwars2",
+        "gw2",
+        "gw2-api",
+        "gw2-overlay",
+        "quality-of-life"
+      ],
+      "language": "C#",
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-19T05:23:38Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
           ]
         }
       ],
@@ -27402,6 +27088,39 @@
       "assessment": null
     },
     {
+      "full_name": "Maselkov/GW2Bot",
+      "name": "GW2Bot",
+      "owner": "Maselkov",
+      "html_url": "https://github.com/Maselkov/GW2Bot",
+      "description": "A GW2 Discord Bot",
+      "topics": [
+        "bot",
+        "discord",
+        "guildwars2"
+      ],
+      "language": "Python",
+      "stars": 53,
+      "archived": false,
+      "pushed_at": "2026-10-19T08:59:59Z",
+      "license": null,
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Maselkov/GW2RPC",
       "name": "GW2RPC",
       "owner": "Maselkov",
@@ -27424,35 +27143,6 @@
           "explain": "Releases contain executables or DLLs you must trust without building them yourself.",
           "evidence": [
             "release asset gw2rpc_installer.exe"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "matthijsberg/GW2000A-HA-MQTT",
-      "name": "GW2000A-HA-MQTT",
-      "owner": "matthijsberg",
-      "html_url": "https://github.com/matthijsberg/GW2000A-HA-MQTT",
-      "description": "Home Assistant config the use the native MQTT connection in the Wittboy GW2000 Weather Station",
-      "topics": [],
-      "language": null,
-      "stars": 2,
-      "archived": false,
-      "pushed_at": "2026-10-11T16:23:41Z",
-      "license": "GPL-3.0",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "2 stars"
           ]
         }
       ],
@@ -27506,9 +27196,9 @@
       "description": "g",
       "topics": [],
       "language": "Lua",
-      "stars": 88,
+      "stars": 89,
       "archived": false,
-      "pushed_at": "2026-10-11T06:29:00Z",
+      "pushed_at": "2026-10-19T09:44:16Z",
       "license": null,
       "points": 5,
       "band": "low",
@@ -27521,40 +27211,6 @@
           "explain": "No declared license, so redistribution and auditing terms are unclear.",
           "evidence": [
             "no license detected by GitHub"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "mriot/pathfinder",
-      "name": "pathfinder",
-      "owner": "mriot",
-      "html_url": "https://github.com/mriot/pathfinder",
-      "description": "A Guild Wars 2 Discord bot that randomizes your dungeon frequenter routes",
-      "topics": [
-        "bot",
-        "discord",
-        "dungeons",
-        "guildwars2"
-      ],
-      "language": "Python",
-      "stars": 1,
-      "archived": false,
-      "pushed_at": "2026-04-26T16:08:54Z",
-      "license": "MIT",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "1 stars"
           ]
         }
       ],
@@ -27583,7 +27239,7 @@
       "language": "TypeScript",
       "stars": 3,
       "archived": false,
-      "pushed_at": "2026-08-28T13:01:44Z",
+      "pushed_at": "2026-10-16T16:51:19Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27739,6 +27395,93 @@
       "assessment": null
     },
     {
+      "full_name": "Odizinne/GW2AchTracker",
+      "name": "GW2AchTracker",
+      "owner": "Odizinne",
+      "html_url": "https://github.com/Odizinne/GW2AchTracker",
+      "description": "",
+      "topics": [],
+      "language": "JavaScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T02:36:08Z",
+      "license": "GPL-3.0",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "OldGuyWoody/gw2api",
+      "name": "gw2api",
+      "owner": "OldGuyWoody",
+      "html_url": "https://github.com/OldGuyWoody/gw2api",
+      "description": "Various scripts/helpers using the Guild Wars 2 API",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T00:31:53Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "PabloSnchz/gw2-wallet-agents",
+      "name": "gw2-wallet-agents",
+      "owner": "PabloSnchz",
+      "html_url": "https://github.com/PabloSnchz/gw2-wallet-agents",
+      "description": "Repo de trabajo del equipo de agentes para gw2-wallet-ligero.",
+      "topics": [],
+      "language": "JavaScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T08:30:49Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "PabloSnchz/gw2-wallet-ligero",
       "name": "gw2-wallet-ligero",
       "owner": "PabloSnchz",
@@ -27790,7 +27533,7 @@
       "language": "JavaScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T02:50:24Z",
+      "pushed_at": "2026-10-19T05:28:38Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27893,7 +27636,7 @@
       "language": "HTML",
       "stars": 5,
       "archived": false,
-      "pushed_at": "2026-10-07T14:34:02Z",
+      "pushed_at": "2026-10-13T12:34:28Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27913,22 +27656,17 @@
       "assessment": null
     },
     {
-      "full_name": "progamesigner/rfgames-backend",
-      "name": "rfgames-backend",
-      "owner": "progamesigner",
-      "html_url": "https://github.com/progamesigner/rfgames-backend",
-      "description": "Server backends for Rush guild in Guild Wars 2",
-      "topics": [
-        "dockerfile",
-        "guildwars2",
-        "rust",
-        "rust-lang"
-      ],
-      "language": "Rust",
-      "stars": 2,
+      "full_name": "qbarnes/gw2dmk",
+      "name": "gw2dmk",
+      "owner": "qbarnes",
+      "html_url": "https://github.com/qbarnes/gw2dmk",
+      "description": "Greaseweazle version of cw2dmk",
+      "topics": [],
+      "language": "C",
+      "stars": 8,
       "archived": false,
-      "pushed_at": "2026-10-07T15:58:08Z",
-      "license": "MIT",
+      "pushed_at": "2026-10-18T21:34:45Z",
+      "license": "GPL-2.0",
       "points": 5,
       "band": "low",
       "signals": [
@@ -27939,7 +27677,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "2 stars"
+            "8 stars"
           ]
         }
       ],
@@ -27947,29 +27685,16 @@
       "assessment": null
     },
     {
-      "full_name": "progamesigner/rfgames-web",
-      "name": "rfgames-web",
-      "owner": "progamesigner",
-      "html_url": "https://github.com/progamesigner/rfgames-web",
-      "description": "Website for Rush guild in Guild Wars 2",
-      "topics": [
-        "guildwars2",
-        "hugo",
-        "mithril",
-        "mithriljs",
-        "netlify",
-        "redux",
-        "sass",
-        "scss",
-        "typescript",
-        "web",
-        "webpack",
-        "website"
-      ],
+      "full_name": "quantazmo/gw2-deco",
+      "name": "gw2-deco",
+      "owner": "quantazmo",
+      "html_url": "https://github.com/quantazmo/gw2-deco",
+      "description": "Browser based decoration layout editor for Guild Wars 2.",
+      "topics": [],
       "language": "TypeScript",
-      "stars": 2,
+      "stars": 0,
       "archived": false,
-      "pushed_at": "2026-09-29T01:36:40Z",
+      "pushed_at": "2026-10-13T03:10:15Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -27981,7 +27706,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "2 stars"
+            "0 stars"
           ]
         }
       ],
@@ -28051,20 +27776,16 @@
       "assessment": null
     },
     {
-      "full_name": "raphaelwdrf/ffcheckboxew",
-      "name": "ffcheckboxew",
-      "owner": "raphaelwdrf",
-      "html_url": "https://github.com/raphaelwdrf/ffcheckboxew",
-      "description": "Fast.farming-community.eu checkbox userscript",
-      "topics": [
-        "fast-farming",
-        "gw2",
-        "userscript"
-      ],
-      "language": "JavaScript",
+      "full_name": "rauwman/gw2-leaderboard",
+      "name": "gw2-leaderboard",
+      "owner": "rauwman",
+      "html_url": "https://github.com/rauwman/gw2-leaderboard",
+      "description": "",
+      "topics": [],
+      "language": "Python",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2025-12-26T02:29:17Z",
+      "pushed_at": "2026-10-18T11:14:00Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -28153,7 +27874,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over two years.",
           "evidence": [
-            "last push 28 months ago"
+            "last push 29 months ago"
           ]
         },
         {
@@ -28166,6 +27887,35 @@
             "no license detected by GitHub"
           ]
         },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "seasky2/gw2-assistant",
+      "name": "gw2-assistant",
+      "owner": "seasky2",
+      "html_url": "https://github.com/seasky2/gw2-assistant",
+      "description": "Read-only MCP server for Guild Wars 2: account, achievements, economy, crafting and legendaries in your AI agent.",
+      "topics": [],
+      "language": "Python",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T19:07:03Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
         {
           "id": "obscure",
           "label": "Little public scrutiny",
@@ -28248,7 +27998,7 @@
       "language": "SCSS",
       "stars": 2,
       "archived": false,
-      "pushed_at": "2026-09-30T07:42:40Z",
+      "pushed_at": "2026-10-18T15:12:20Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -28261,35 +28011,6 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "2 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "SilverHalf/nexus-of-eternity",
-      "name": "nexus-of-eternity",
-      "owner": "SilverHalf",
-      "html_url": "https://github.com/SilverHalf/nexus-of-eternity",
-      "description": "Strategy guide and mechanical reference for the Nexus of Eternity encounter in Guild Wars 2.",
-      "topics": [],
-      "language": "SCSS",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-11T12:55:39Z",
-      "license": "MIT",
-      "points": 5,
-      "band": "low",
-      "signals": [
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
           ]
         }
       ],
@@ -28348,7 +28069,7 @@
       "language": "TypeScript",
       "stars": 10,
       "archived": false,
-      "pushed_at": "2026-10-11T11:37:06Z",
+      "pushed_at": "2026-10-18T09:13:20Z",
       "license": null,
       "points": 5,
       "band": "low",
@@ -28563,6 +28284,35 @@
       "assessment": null
     },
     {
+      "full_name": "Talos51/GW2-SquadBuilder",
+      "name": "GW2-SquadBuilder",
+      "owner": "Talos51",
+      "html_url": "https://github.com/Talos51/GW2-SquadBuilder",
+      "description": "Guild Wars 2 Online & Lightweight squad builder",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-15T17:50:14Z",
+      "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "theextendedname/arcDPS-Installer",
       "name": "arcDPS-Installer",
       "owner": "theextendedname",
@@ -28654,7 +28404,7 @@
       "name": "ascalon",
       "owner": "valaphee",
       "html_url": "https://github.com/valaphee/ascalon",
-      "description": "Research and Reverse-Engineering project of Guild Wars 2!",
+      "description": "Research and reverse-engineering project of Guild Wars 2",
       "topics": [
         "guild-wars-2",
         "guildwars2",
@@ -28663,7 +28413,7 @@
       "language": "Rust",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T22:37:38Z",
+      "pushed_at": "2026-10-16T19:30:42Z",
       "license": "MIT",
       "points": 5,
       "band": "low",
@@ -28687,7 +28437,7 @@
       "name": "ascalon-client",
       "owner": "valaphee",
       "html_url": "https://github.com/valaphee/ascalon-client",
-      "description": "Research and Reverse-Engineering project of Guild Wars 2!",
+      "description": "Research and reverse-engineering project of Guild Wars 2",
       "topics": [
         "guild-wars-2",
         "guildwars2",
@@ -28696,8 +28446,37 @@
       "language": "Rust",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T13:21:01Z",
+      "pushed_at": "2026-10-16T20:25:41Z",
       "license": "MIT",
+      "points": 5,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Warzuponus/GW2onMac",
+      "name": "GW2onMac",
+      "owner": "Warzuponus",
+      "html_url": "https://github.com/Warzuponus/GW2onMac",
+      "description": "Guild Wars 2 launcher for Apple Silicon Macs using Wine 11 and Apple's Game Porting Toolkit",
+      "topics": [],
+      "language": "Shell",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T07:15:01Z",
+      "license": "GPL-3.0",
       "points": 5,
       "band": "low",
       "signals": [
@@ -28892,7 +28671,7 @@
         "rust"
       ],
       "language": "Rust",
-      "stars": 1,
+      "stars": 2,
       "archived": false,
       "pushed_at": "2026-09-23T13:04:04Z",
       "license": "MIT",
@@ -28906,7 +28685,7 @@
           "policy": "support-own-risk",
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
-            "1 stars"
+            "2 stars"
           ]
         }
       ],
@@ -29037,24 +28816,6 @@
       "assessment": null
     },
     {
-      "full_name": "AsherGlick/Burrito",
-      "name": "Burrito",
-      "owner": "AsherGlick",
-      "html_url": "https://github.com/AsherGlick/Burrito",
-      "description": "An overlay tool for Guild Wars 2 that works on linux",
-      "topics": [],
-      "language": "C++",
-      "stars": 116,
-      "archived": false,
-      "pushed_at": "2025-10-13T02:42:44Z",
-      "license": "GPL-2.0",
-      "points": 0,
-      "band": "low",
-      "signals": [],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "blish-hud/Blish-HUD",
       "name": "Blish-HUD",
       "owner": "blish-hud",
@@ -29065,13 +28826,62 @@
         "overlay"
       ],
       "language": "C#",
-      "stars": 412,
+      "stars": 413,
       "archived": false,
       "pushed_at": "2026-02-19T12:26:42Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
       "signals": [],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "breakbarcc/gw2-legendary-tracker",
+      "name": "gw2-legendary-tracker",
+      "owner": "breakbarcc",
+      "html_url": "https://github.com/breakbarcc/gw2-legendary-tracker",
+      "description": "",
+      "topics": [],
+      "language": "TypeScript",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-16T13:32:51Z",
+      "license": null,
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"api.guildwars2.com\""
+          ]
+        }
+      ],
       "override": null,
       "assessment": null
     },
@@ -29183,7 +28993,7 @@
       "language": "Python",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-12T05:37:14Z",
+      "pushed_at": "2026-10-19T04:19:37Z",
       "license": null,
       "points": 0,
       "band": "low",
@@ -29258,7 +29068,7 @@
       "language": "Python",
       "stars": 14,
       "archived": false,
-      "pushed_at": "2026-10-11T15:46:07Z",
+      "pushed_at": "2026-10-16T15:23:34Z",
       "license": "GPL-3.0",
       "points": 0,
       "band": "low",
@@ -29390,7 +29200,7 @@
       "language": "Go",
       "stars": 12,
       "archived": false,
-      "pushed_at": "2026-10-01T09:45:31Z",
+      "pushed_at": "2026-10-19T09:44:25Z",
       "license": "GPL-3.0",
       "points": 0,
       "band": "low",
@@ -29408,7 +29218,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T13:29:22Z",
+      "pushed_at": "2026-10-16T16:31:52Z",
       "license": null,
       "points": 0,
       "band": "low",
@@ -29563,7 +29373,7 @@
       "language": "Kotlin",
       "stars": 4,
       "archived": false,
-      "pushed_at": "2026-10-08T17:38:22Z",
+      "pushed_at": "2026-10-15T07:19:33Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -29609,7 +29419,7 @@
       "language": "Kotlin",
       "stars": 7,
       "archived": false,
-      "pushed_at": "2026-10-10T08:25:10Z",
+      "pushed_at": "2026-10-15T07:24:05Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -29653,7 +29463,7 @@
       "language": "Java",
       "stars": 12,
       "archived": false,
-      "pushed_at": "2026-10-08T07:34:54Z",
+      "pushed_at": "2026-10-15T06:56:40Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -29679,7 +29489,7 @@
       "language": "TypeScript",
       "stars": 26,
       "archived": false,
-      "pushed_at": "2026-10-12T00:59:31Z",
+      "pushed_at": "2026-10-19T01:39:43Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -29799,6 +29609,45 @@
       "assessment": null
     },
     {
+      "full_name": "imothep666/WaypointForGuildWars2",
+      "name": "WaypointForGuildWars2",
+      "owner": "imothep666",
+      "html_url": "https://github.com/imothep666/WaypointForGuildWars2",
+      "description": "Companion App for Guild Wars 2",
+      "topics": [],
+      "language": "C#",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-16T02:03:21Z",
+      "license": "GPL-3.0",
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"official Guild Wars 2 API\""
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "jjanow/GW2ExtractNourishmentTool",
       "name": "GW2ExtractNourishmentTool",
       "owner": "jjanow",
@@ -29838,16 +29687,16 @@
       "assessment": null
     },
     {
-      "full_name": "JTanthony93/GW2-VLM-COPILOT",
+      "full_name": "JTanthony/GW2-VLM-COPILOT",
       "name": "GW2-VLM-COPILOT",
-      "owner": "JTanthony93",
-      "html_url": "https://github.com/JTanthony93/GW2-VLM-COPILOT",
+      "owner": "JTanthony",
+      "html_url": "https://github.com/JTanthony/GW2-VLM-COPILOT",
       "description": "Experimental local AI copilot for Guild Wars 2, with wiki research, optional account progress, and screen understanding.",
       "topics": [],
       "language": "Python",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-12T02:27:48Z",
+      "pushed_at": "2026-10-18T16:32:55Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -30018,6 +29867,112 @@
       "assessment": null
     },
     {
+      "full_name": "kynforge/gw2-bank-sorter",
+      "name": "gw2-bank-sorter",
+      "owner": "kynforge",
+      "html_url": "https://github.com/kynforge/gw2-bank-sorter",
+      "description": "Cleanup planner for your Guild Wars 2 bank and bags: what to deposit, use, sell, salvage or keep, using the official API.",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-17T06:05:58Z",
+      "license": "MIT",
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"api.guildwars2.com\""
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "Mahargip/achievement-item-tracker-gw2",
+      "name": "achievement-item-tracker-gw2",
+      "owner": "Mahargip",
+      "html_url": "https://github.com/Mahargip/achievement-item-tracker-gw2",
+      "description": "An in-game Blish HUD module for Guild Wars 2 that searches achievements, lists required collection items, and aggregates your live totals across bags, bank, and material storage.",
+      "topics": [
+        "achievement-tracker",
+        "blish-hud",
+        "blish-hud-module",
+        "blishhud-addon",
+        "csharp",
+        "dotnet",
+        "game-overlay",
+        "gaming-tools",
+        "guild-wars-2",
+        "guild-wars-2-addon",
+        "guildwars2",
+        "gw2",
+        "gw2-api",
+        "gw2-overlay",
+        "inventory-manager",
+        "item-tracker",
+        "quality-of-life"
+      ],
+      "language": "C#",
+      "stars": 1,
+      "archived": false,
+      "pushed_at": "2026-10-19T04:27:41Z",
+      "license": null,
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "1 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"official Guild Wars 2 API\""
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
       "full_name": "Melquiisedeq/wvw-relink-checker",
       "name": "wvw-relink-checker",
       "owner": "Melquiisedeq",
@@ -30033,7 +29988,7 @@
       "language": "JavaScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T07:28:46Z",
+      "pushed_at": "2026-10-18T22:27:56Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -30185,7 +30140,7 @@
       "language": "Java",
       "stars": 1,
       "archived": false,
-      "pushed_at": "2026-10-11T16:32:54Z",
+      "pushed_at": "2026-10-18T16:38:21Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -30227,7 +30182,7 @@
         "tyria3d"
       ],
       "language": "TypeScript",
-      "stars": 34,
+      "stars": 35,
       "archived": false,
       "pushed_at": "2026-08-02T02:26:29Z",
       "license": "GPL-3.0",
@@ -30270,6 +30225,55 @@
           "explain": "Few stars, so few people have looked at the code.",
           "evidence": [
             "0 stars"
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "okjohanna/GW2-TP-ET-bot",
+      "name": "GW2-TP-ET-bot",
+      "owner": "okjohanna",
+      "html_url": "https://github.com/okjohanna/GW2-TP-ET-bot",
+      "description": "",
+      "topics": [],
+      "language": "C#",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-16T21:18:02Z",
+      "license": null,
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"official GW2 API\""
           ]
         }
       ],
@@ -30453,55 +30457,6 @@
       "assessment": null
     },
     {
-      "full_name": "safaburakozkan/gw2-turkce-panel",
-      "name": "gw2-turkce-panel",
-      "owner": "safaburakozkan",
-      "html_url": "https://github.com/safaburakozkan/gw2-turkce-panel",
-      "description": "Guild Wars 2 Türkçe panel",
-      "topics": [],
-      "language": "HTML",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-02T12:37:30Z",
-      "license": null,
-      "points": 0,
-      "band": "low",
-      "signals": [
-        {
-          "id": "api_only",
-          "label": "Official API only",
-          "weight": -15,
-          "policy": "api-terms",
-          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
-          "evidence": [
-            "matched \"api.guildwars2.com\""
-          ]
-        },
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        }
-      ],
-      "override": null,
-      "assessment": null
-    },
-    {
       "full_name": "sliekens/gw2sdk",
       "name": "gw2sdk",
       "owner": "sliekens",
@@ -30513,7 +30468,7 @@
       "language": "C#",
       "stars": 12,
       "archived": false,
-      "pushed_at": "2026-10-12T07:24:39Z",
+      "pushed_at": "2026-10-19T07:09:50Z",
       "license": "MIT",
       "points": 0,
       "band": "low",
@@ -30542,7 +30497,7 @@
       "language": "HTML",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-09T13:22:48Z",
+      "pushed_at": "2026-10-14T14:41:21Z",
       "license": "GPL-3.0",
       "points": 0,
       "band": "low",
@@ -30565,6 +30520,55 @@
           "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
           "evidence": [
             "matched \"api.guildwars2.com\""
+          ]
+        }
+      ],
+      "override": null,
+      "assessment": null
+    },
+    {
+      "full_name": "stiflerorflow/gw2-hero-atlas",
+      "name": "gw2-hero-atlas",
+      "owner": "stiflerorflow",
+      "html_url": "https://github.com/stiflerorflow/gw2-hero-atlas",
+      "description": "",
+      "topics": [],
+      "language": "HTML",
+      "stars": 0,
+      "archived": false,
+      "pushed_at": "2026-10-18T16:21:40Z",
+      "license": null,
+      "points": 0,
+      "band": "low",
+      "signals": [
+        {
+          "id": "no_license",
+          "label": "No license",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "No declared license, so redistribution and auditing terms are unclear.",
+          "evidence": [
+            "no license detected by GitHub"
+          ]
+        },
+        {
+          "id": "obscure",
+          "label": "Little public scrutiny",
+          "weight": 5,
+          "policy": "support-own-risk",
+          "explain": "Few stars, so few people have looked at the code.",
+          "evidence": [
+            "0 stars"
+          ]
+        },
+        {
+          "id": "api_only",
+          "label": "Official API only",
+          "weight": -15,
+          "policy": "api-terms",
+          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
+          "evidence": [
+            "matched \"official GW2 API\""
           ]
         }
       ],
@@ -30616,7 +30620,7 @@
           "policy": "support-own-risk",
           "explain": "No pushes in over a year.",
           "evidence": [
-            "last push 18 months ago"
+            "last push 19 months ago"
           ]
         },
         {
@@ -30643,7 +30647,7 @@
       "language": "TypeScript",
       "stars": 0,
       "archived": false,
-      "pushed_at": "2026-10-11T16:19:24Z",
+      "pushed_at": "2026-10-13T13:44:53Z",
       "license": null,
       "points": 0,
       "band": "low",
@@ -30771,55 +30775,6 @@
       "points": 0,
       "band": "low",
       "signals": [],
-      "override": null,
-      "assessment": null
-    },
-    {
-      "full_name": "zoehay/gw2-armory",
-      "name": "gw2-armory",
-      "owner": "zoehay",
-      "html_url": "https://github.com/zoehay/gw2-armory",
-      "description": "",
-      "topics": [],
-      "language": "Go",
-      "stars": 0,
-      "archived": false,
-      "pushed_at": "2026-10-10T23:57:34Z",
-      "license": null,
-      "points": 0,
-      "band": "low",
-      "signals": [
-        {
-          "id": "no_license",
-          "label": "No license",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "No declared license, so redistribution and auditing terms are unclear.",
-          "evidence": [
-            "no license detected by GitHub"
-          ]
-        },
-        {
-          "id": "obscure",
-          "label": "Little public scrutiny",
-          "weight": 5,
-          "policy": "support-own-risk",
-          "explain": "Few stars, so few people have looked at the code.",
-          "evidence": [
-            "0 stars"
-          ]
-        },
-        {
-          "id": "api_only",
-          "label": "Official API only",
-          "weight": -15,
-          "policy": "api-terms",
-          "explain": "Appears to use only the official Guild Wars 2 API, outside the game process.",
-          "evidence": [
-            "matched \"official GW2 API\""
-          ]
-        }
-      ],
       "override": null,
       "assessment": null
     }
