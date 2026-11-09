@@ -17,17 +17,17 @@
   "darkharasho/axiam": {
     "tag": "v1.5.3",
     "publishedAt": "2026-11-02T19:11:20Z",
-    "downloads": 40
+    "downloads": 42
   },
   "darkharasho/axibridge": {
-    "tag": "v3.22.12",
-    "publishedAt": "2026-11-07T07:08:03Z",
-    "downloads": 203
+    "tag": "v3.23.0",
+    "publishedAt": "2026-11-08T20:07:51Z",
+    "downloads": 345
   },
   "darkharasho/axiforge": {
-    "tag": "v1.6.0",
-    "publishedAt": "2026-11-05T20:36:41Z",
-    "downloads": 37
+    "tag": "v1.6.2",
+    "publishedAt": "2026-11-08T20:59:40Z",
+    "downloads": 16
   },
   "darkharasho/axilog": {
     "tag": "v1.16.2",
@@ -37,7 +37,7 @@
   "darkharasho/axiom": {
     "tag": "v0.7.0",
     "publishedAt": "2026-10-13T01:08:11Z",
-    "downloads": 2108
+    "downloads": 2202
   },
   "darkharasho/axipulse": {
     "tag": "v0.5.2",
@@ -47,7 +47,7 @@
   "darkharasho/axiroster": {
     "tag": "v1.7.1",
     "publishedAt": "2026-10-13T03:28:00Z",
-    "downloads": 73
+    "downloads": 76
   },
   "darkharasho/axistream": {
     "tag": "v1.2.1",
