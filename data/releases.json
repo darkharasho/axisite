@@ -7,7 +7,7 @@
   "darkharasho/arcdps-player-outline": {
     "tag": "v0.4.17",
     "publishedAt": "2026-11-25T15:12:12Z",
-    "downloads": 7
+    "downloads": 8
   },
   "darkharasho/arcdps-wiki": {
     "tag": "v1.0.0",
@@ -17,17 +17,17 @@
   "darkharasho/axiam": {
     "tag": "v1.5.4",
     "publishedAt": "2026-11-15T04:04:16Z",
-    "downloads": 76
+    "downloads": 82
   },
   "darkharasho/axibridge": {
     "tag": "v3.25.0",
     "publishedAt": "2026-11-12T03:07:19Z",
-    "downloads": 1052
+    "downloads": 1127
   },
   "darkharasho/axiforge": {
     "tag": "v1.6.5",
     "publishedAt": "2026-11-24T05:41:54Z",
-    "downloads": 44
+    "downloads": 53
   },
   "darkharasho/axilog": {
     "tag": "v1.18.0",
@@ -35,19 +35,19 @@
     "downloads": 27
   },
   "darkharasho/axiom": {
-    "tag": "v0.7.1",
-    "publishedAt": "2026-11-26T09:03:18Z",
-    "downloads": 44
+    "tag": "v0.7.5",
+    "publishedAt": "2026-11-27T02:24:07Z",
+    "downloads": 64
   },
   "darkharasho/axipulse": {
     "tag": "v0.5.2",
     "publishedAt": "2026-11-03T03:54:18Z",
-    "downloads": 61
+    "downloads": 63
   },
   "darkharasho/axiroster": {
     "tag": "v1.7.1",
     "publishedAt": "2026-10-13T03:28:00Z",
-    "downloads": 107
+    "downloads": 108
   },
   "darkharasho/axistream": {
     "tag": "v1.2.1",
